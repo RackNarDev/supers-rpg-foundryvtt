@@ -4,7 +4,7 @@
 
 ### via Manifest-URL
 
-TODO: Link einfügen
+[https://github.com/RackNarDev/supers-rpg-foundryvtt/releases/latest/download/system.json]()
 
 ### Lokale Installation
 
