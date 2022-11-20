@@ -1,0 +1,21 @@
+{{#if data.specializations.length}}
+
+    <div class="s_as__detail-panel">
+
+        <div class="s_as__aptitudes-list__specializations" data-id="{{_id}}">
+
+            {{#each data.specializations}}
+
+                {{> (cmp 'dice-roll') amount=rating rollaction=label dicemax='3'}}
+
+                <span class="s_as__ability-panel__text">{{label}} {{> (cmp 'costs') this}}</span>
+
+                <span class="s_as__ability-panel__text s_as__center">{{rating}}</span>
+
+            {{/each}}
+
+        </div>
+
+    </div>
+
+{{/if}}

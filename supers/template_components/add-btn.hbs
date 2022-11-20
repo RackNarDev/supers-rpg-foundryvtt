@@ -1,0 +1,9 @@
+<a class="cmp cmp-btn s_btn_add" data-action="add"
+   {{#if type}}data-type="{{type}}"{{/if}}
+    {{#if _id}}data-id="{{_id}}"{{/if}}
+    {{#if index}}data-index="{{index}}"{{/if}}
+    {{#if target}}data-target="{{target}}"{{/if}}
+    {{#if title}}title="{{ localize title }}"{{/if}}>
+    <i class="fas fa-plus"></i>
+    {{#if label}}{{ localize label }}{{/if}}
+</a>

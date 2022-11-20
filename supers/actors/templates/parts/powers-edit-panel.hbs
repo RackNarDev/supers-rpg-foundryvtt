@@ -1,0 +1,34 @@
+<div class="s_as__edit-panel">
+
+    {{#if data.edges.length}}
+
+        <div class="s_as__powers-list__edges" data-id="{{_id}}">
+
+            {{#each data.edges as |edge idx|}}
+
+                <select class="s_as__powers-list__edges__type" data-action="inline-edit" data-target="edges"
+                        data-field="type" data-id="{{../this._id }}" data-index="{{idx}}">
+                    {{#select type}}
+                        <option value="Boost">{{ localize 'SUPERS.Boost' }}</option>
+                        <option value="Complication">{{ localize 'SUPERS.Complication' }}</option>
+                        <option value="TradeOff">{{ localize 'SUPERS.TradeOff' }}</option>
+                        <option value="Info">{{ localize 'SUPERS.Annotation' }}</option>
+                    {{/select}}
+                </select>
+
+                {{> (cmp 'inline-edit') index=(concat '' idx) _id=../this._id target='edges' value=label field='label'  placeholder='SUPERS.Edge' }}
+
+                {{#unless (eq type "Info")}}
+                    {{> (cmp 'inline-edit') index=(concat '' idx) _id=../this._id target='edges' value=rating field='rating' cmpClass='s_as__center'}}
+                    {{> (cmp 'delete-btn') index=(concat '' idx) _id=../this._id target='edges' title='SUPERS.deletePowerEdge' }}
+                {{/unless}}
+
+            {{/each}}
+
+        </div>
+
+    {{/if}}
+
+    {{> (cmp 'add-btn') this target='edges' label='SUPERS.addPowerEdge'}}
+
+</div>

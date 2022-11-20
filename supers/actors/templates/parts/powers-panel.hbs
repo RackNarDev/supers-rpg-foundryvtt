@@ -1,0 +1,11 @@
+<section class="s_as__powers-panel s_as__ability-panel">
+
+    {{> (actorPart 'panel-header') title='SUPERS.Powers' costs=Costs.Powers}}
+
+    <div class="s_as__powers-list">
+        {{#each Powers}}
+            {{> (actorPart 'powers-row') this }}
+        {{/each}}
+    </div>
+
+</section>

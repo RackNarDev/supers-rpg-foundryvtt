@@ -1,0 +1,13 @@
+<section class="s_as__dis-advantages-panel s_as__ability-panel">
+
+    {{> (actorPart 'panel-header') title='SUPERS.AdvantagesDisadvantages' costs=Costs.DisAdvantages}}
+
+    <div class="type-of-advantages s_as__dis-advantages-list">
+        {{> (actorPart 'advantages-disadvantages-entries') items=Advantages label='SUPERS.Advantages'}}
+    </div>
+
+    <div class="type-of-disadvantages s_as__dis-advantages-list">
+        {{> (actorPart 'advantages-disadvantages-entries') items=Disadvantages label='SUPERS.Disadvantages'}}
+    </div>
+
+</section>

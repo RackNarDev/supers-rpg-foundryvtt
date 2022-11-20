@@ -1,0 +1,74 @@
+{
+  "Actor": {
+    "types": [
+      "Hero"
+    ],
+    "Hero": {
+      "Age": 19,
+      "AlterEgo": "",
+      "Competency": {
+        "max": 0,
+        "current": 0,
+        "temp": 0
+      },
+      "DiceTotals": 20,
+      "Eyes": "",
+      "Gender": "",
+      "Hair": "",
+      "Height": "",
+      "IdentitySecret": "",
+      "Origin": "",
+      "RealName": "",
+      "Resistances": {
+        "Composure": {
+          "current": 1,
+          "max": 1
+        },
+        "Fortitude": {
+          "current": 1,
+          "max": 1
+        },
+        "Reaction": {
+          "current": 1,
+          "max": 1
+        },
+        "Will": {
+          "current": 1,
+          "max": 1
+        }
+      },
+      "Weight": ""
+    }
+  },
+  "Item": {
+    "types": [
+      "Aptitude",
+      "Advantage",
+      "Disadvantage",
+      "Power",
+      "Equipment"
+    ],
+    "Aptitude": {
+      "rating": 1,
+      "de": "",
+      "specializations": []
+    },
+    "Advantage": {
+      "rating": 1,
+      "de": ""
+    },
+    "Disadvantage": {
+      "rating": 1,
+      "de": ""
+    },
+    "Power": {
+      "rating": 0,
+      "de": "",
+      "edges": []
+    },
+    "Equipment": {
+      "rating": 0,
+      "de": ""
+    }
+  }
+}

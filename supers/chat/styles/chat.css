@@ -1,0 +1,86 @@
+.chat-message .roll-header {
+    display: flex;
+    gap: 1rem;
+}
+
+.chat-message .roll-header img {
+    border: 0;
+    display: block;
+    margin: 0;
+    padding: 0;
+    width: 80px;
+}
+
+.chat-message .rollaction {
+    align-items: center;
+    display: flex;
+    gap: 1rem;
+    justify-content: space-around;
+    margin: 1rem 0;
+}
+
+.chat-message .rollaction-label {
+    font-size: 1.5rem;
+}
+
+.chat-message .actor-name {
+    align-self: center;
+    font-size: 1.6rem;
+    margin: 1rem 0;
+    text-align: center;
+}
+
+.chat-message .roll-subtitle {
+    border-bottom: 1px solid;
+    display: block;
+    text-align: center;
+}
+
+.chat-message .roll-result {
+    background: yellow;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    display: block;
+    flex: 0 0 4rem;
+    font-size: 2rem;
+    height: 4rem;
+    line-height: 4rem;
+    margin: 0;
+    text-align: center;
+    width: 4rem;
+}
+
+.chat-message .roll-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    list-style: none;
+    margin: 1rem 0;
+    padding: 0;
+}
+
+.chat-message .roll-list li {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    font-weight: 600;
+    height: 2rem;
+    line-height: 2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    width: 2rem;
+}
+
+.chat-message .used-dice li {
+    background: #dfcd7c;
+}
+
+.chat-message .rest-dice li {
+    background: #c0c0c0;
+    color: #ffffff;
+}
+
+.chat-message .roll-list li.chaos-dice {
+    background: #d10b0b;
+    color: #ffffff;
+}

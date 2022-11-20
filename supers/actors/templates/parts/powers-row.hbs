@@ -1,0 +1,20 @@
+{{> (cmp 'dice-roll') amount=data.rating rollaction=(s_i_i18n this)}}
+
+<div class="s_as__ability-panel__text">
+    {{s_i_i18n this }} {{> (cmp 'costs') data}}
+</div>
+
+
+{{#if (eq data.state 'edit')}}
+    {{> (cmp 'inline-edit') this value=data.rating field='data.rating' cmpClass='s_as__center' }}
+{{else}}
+    <span class="s_as__ability-panel__text s_as__center">{{data.rating}}</span>
+{{/if}}
+
+{{> (cmp 'edit-item-btn') this action='edit-item' active=(eq data.state 'edit') title='SUPERS.editPower'}}
+
+{{#if (eq data.state 'edit')}}
+    {{>  (actorPart 'powers-edit-panel') this }}
+{{else}}
+    {{>  (actorPart 'powers-detail-panel') this }}
+{{/if}}

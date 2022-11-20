@@ -1,0 +1,17 @@
+<section class="s_as__resistances-panel s_as__ability-panel">
+
+    {{> (actorPart 'panel-header') title='SUPERS.Resistances' costs=Costs.Resistances}}
+
+    <div class="s_as__resistances-list">
+
+        <span class="s_as__ability-panel__hint">{{ localize 'SUPERS.current' }}</span>
+        <span class="s_as__ability-panel__hint">{{ localize 'SUPERS.max' }}</span>
+
+        {{> (actorPart 'resistance-row') key='Composure' }}
+        {{> (actorPart 'resistance-row') key='Fortitude' }}
+        {{> (actorPart 'resistance-row') key='Reaction' }}
+        {{> (actorPart 'resistance-row') key='Will' }}
+
+    </div>
+
+</section>

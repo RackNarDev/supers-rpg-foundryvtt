@@ -1,0 +1,20 @@
+<section class="s_as__competency-panel s_as__ability-panel">
+
+    {{> (actorPart 'panel-header') title='SUPERS.Competency' costs=Costs.Competency}}
+
+    <div class="s_as__competencies">
+
+        <span class="s_as__ability-panel__hint">{{ localize 'SUPERS.Current' }}</span>
+        <span class="s_as__ability-panel__hint">{{ localize 'SUPERS.Max' }}</span>
+        <span class="s_as__ability-panel__hint">{{ localize 'SUPERS.Temp' }}</span>
+
+        <input class="s_as__ability-panel__input s_as__center" name="data.Competency.current" type="text"
+               value="{{data.data.Competency.current}}"/>
+        <input class="s_as__ability-panel__input s_as__center" name="data.Competency.max" type="text"
+               value="{{data.data.Competency.max}}"/>
+        <input class="s_as__ability-panel__input s_as__center" name="data.Competency.temp" type="text"
+               value="{{data.data.Competency.temp}}"/>
+
+    </div>
+
+</section>

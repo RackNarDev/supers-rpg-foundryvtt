@@ -1,0 +1,340 @@
+/* Namespace: s_as__ (supers_actorsheet) */
+
+/* ----------------- */
+/* CSS Basisproperty */
+/* ----------------- */
+
+.s_as__actor-sheet {
+    --panel-font-size: 1rem;
+    --panel-font-weight: 400;
+    --panel-form-field-height: 100%;
+    --panel-header-font-size: 1.2rem;
+    --panel-hint-font-size: 0.8rem;
+    --panel-hint-font-weight: 100;
+    --edit-panel--font-size: 1rem;
+    --edit-panel--font-weight: 400;
+    --edit-panel--text-decoration: underline;
+    --inline-popup--font-size: 1rem;
+    --inline-popup--font-weight: 600;
+    --inline-popup-background: var(--color-text-light-primary);
+    --panel-strong-font-weight: 600;
+}
+
+/* ------ */
+/* Helper */
+/* ------ */
+
+.s_as__center, .s_as__center[type="text"] {
+    text-align: center;
+}
+
+/* ------ */
+/* Header */
+/* ------ */
+
+.s_as__header {
+    column-gap: 2rem;
+    display: grid;
+    grid-template-areas: "img name"
+                         "img info";
+    grid-template-columns: 192px 1fr;
+    grid-template-rows: auto;
+    margin: 0 0 2rem;
+}
+
+.s_as__header__img {
+    border: none;
+    display: block;
+    grid-area: img;
+    margin: 0;
+    padding: 0;
+}
+
+.s_as__header__name {
+    align-self: end;
+    grid-area: name;
+}
+
+.s_as__header__info {
+    align-self: start;
+    grid-area: info;
+}
+
+/* ---- */
+/* Main */
+/* ---- */
+
+.s_as__main {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.s_as__main__c1 {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    grid-column: 1 /span 2;
+}
+
+.s_as__main__c2 {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    grid-column: 3 /span 3;
+}
+
+.s_as__main__c3 {
+    grid-column: 1 /span 5;
+}
+
+/* ----- */
+/* icons */
+/* ----- */
+
+.s_as__item__inline_icons {
+    background: var(--color-text-light-primary);
+    display: inline-block;
+    height: 100%;
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    transition: all 0.2s ease-in-out;
+    width: 0;
+}
+
+.s_as__item__inline_icons > .cmp-btn {
+    font-size: 0.8em;
+    margin: 0 0.25rem;
+}
+
+.s_as__inline_icons_container {
+    display: inline-block;
+    position: relative;
+}
+
+.s_as__inline_icons_container:hover .s_as__item__inline_icons {
+    width: 100%;
+}
+
+/* ----------- */
+/* Popup Panel */
+/* ----------- */
+
+.s_as__inline_popup {
+    background: var(--inline-popup-background);
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 1rem;
+    min-width: 100%;
+    padding: 0.5rem;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 100;
+}
+
+.s_as__inline_popup__title {
+    font-size: var(--inline-popup--font-size);
+    font-weight: var(--inline-popup--font-weight);
+    margin: 0 0 0.5rem;
+}
+
+/* --------- */
+/* Editpanel */
+/* ----=---- */
+
+.s_as__edit-panel__header {
+    font-size: var(--edit-panel--font-size);
+    font-weight: var(--edit-panel--font-weight);
+    margin: 0.5rem 0 0.5rem;
+    text-decoration: var(--edit-panel--text-decoration);
+}
+
+/* -------------- */
+/* Ability Panels */
+/* -------------- */
+
+.s_as__ability-panel {
+    font-size: var(--panel-font-size);
+    font-weight: var(--panel-font-weight);
+}
+
+.s_as__ability-panel__strong {
+    font-weight: var(--panel-strong-font-weight);
+}
+
+.s_as__ability-panel__hint {
+    font-size: var(--panel-hint-font-size);
+    font-weight: var(--panel-hint-font-weight);
+    text-align: center;
+}
+
+.s_as__ability-panel__header {
+    display: flex;
+    font-size: var(--panel-header-font-size);
+    gap: 1rem;
+    justify-content: space-between;
+}
+
+.s_as__ability-panel__header .s_cmp__costs {
+    font-size: 0.8em;
+}
+
+.s_as__ability-panel__input, .s_as__ability-panel__input[type="text"] {
+    font-size: var(--panel-font-size);
+    font-weight: var(--panel-font-weight);
+    height: var(--panel-form-field-height);
+    width: 100%;
+}
+
+.s_as__ability-panel img {
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* ----------- */
+/* Resistances */
+/* ----------- */
+
+.s_as__resistances-list {
+    align-items: center;
+    column-gap: 0.5rem;
+    display: grid;
+    grid-template-columns: 1.2rem auto 5ch 5ch
+}
+
+.s_as__resistances-list [data-rolld6] {
+    grid-column-start: 1;
+}
+
+.s_as__resistances-list .s_as__ability-panel__text {
+    align-items: flex-end;
+    display: flex;
+    grid-column-start: 2;
+}
+
+.s_as__resistances-list .s_as__ability-panel__hint:first-of-type {
+    grid-column-start: 3;
+}
+
+/* ------------- */
+/* DisAdvantages */
+/* ------------- */
+
+.s_as__dis-advantages-list {
+    margin-bottom: 0.5rem;
+}
+
+.s_as__dis-advantages-list .s_as__inline_popup .cmp-btn {
+    margin: 1.5rem 0 0.5rem;
+    white-space: nowrap;
+}
+
+/* --------- */
+/* Aptitudes */
+/* --------- */
+
+.s_as__aptitudes-list {
+    align-items: center;
+    column-gap: 0.5rem;
+    display: grid;
+    grid-template-columns: 1.2rem auto  2rem 1rem;
+}
+
+.s_as__aptitudes-list [data-rolld6] {
+    grid-column-start: 1;
+}
+
+.s_as__aptitudes-list .s_as__edit-panel {
+    margin: 0 0 1rem;
+}
+
+.s_as__aptitudes-list .s_as__edit-panel,
+.s_as__aptitudes-list .s_as__detail-panel {
+    grid-column: 1 /span 4;
+}
+
+.s_as__aptitudes-list__specializations {
+    column-gap: 0.5rem;
+    display: grid;
+    grid-template-columns: auto 2rem 1rem;
+    margin: 0 0 0.5rem;
+    row-gap: 0.25rem;
+}
+
+.s_as__detail-panel .s_as__aptitudes-list__specializations {
+    align-items: center;
+    grid-template-columns: 1.2rem auto 2rem 1rem;
+    margin: 0 0 0.5rem 1.7rem;
+    row-gap: 0;
+}
+
+.s_as__aptitudes-list .s_as__edit-panel .s_btn_add {
+    display: inline-block;
+    margin-top: 1rem;
+}
+
+.s_as__aptitudes-list .s_as__edit-panel .s_as__aptitudes-list__specializations ~ .s_btn_add {
+    margin-top: 0;
+}
+
+/* ------ */
+/* Powers */
+/* ------ */
+.s_as__powers-list {
+    align-items: center;
+    column-gap: 0.5rem;
+    display: grid;
+    grid-template-columns: 1.2rem auto 2rem 1rem;
+}
+
+.s_as__powers-list [data-rolld6] {
+    grid-column-start: 1;
+}
+
+.s_as__powers-list .s_as__edit-panel {
+    grid-column: 1 /span 4;
+}
+
+.s_as__powers-list .s_as__detail-panel {
+    grid-column: 2 /span 2;
+}
+
+.s_as__powers-list .s_as__edit-panel {
+    margin: 0 0 1rem;
+}
+
+.s_as__powers-list__edges {
+    align-items: center;
+    column-gap: 0.5rem;
+    display: grid;
+    grid-column-start: 2;
+    grid-template-columns:  8rem auto 2rem 1rem;
+    margin: 0 0 1rem;
+    row-gap: 0.25rem;
+}
+
+.s_as__powers-list__edges__type {
+    grid-column-start: 1;
+}
+
+/* ---------- */
+/* Competency */
+/* ---------- */
+
+.s_as__competencies {
+    column-gap: 0.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin: 0 auto;
+    max-width: 25ch;
+    text-align: center;
+}
+
+/* ============================== */
+
+
