@@ -1,0 +1,28 @@
+<div class="roll-header">
+    <img src="{{actor.data.img}}" alt="">
+    <div class="actor-name"> {{actor.data.name}}</div>
+</div>
+
+<div class="rollaction">
+    <span class="rollaction-label"> {{rollaction}}</span>
+    <span class="roll-result">{{sum}}</span>
+</div>
+
+<strong class="roll-subtitle">{{ localize 'SUPERS.DiceRoll' }}</strong>
+
+<ul class="roll-list used-dice">
+    {{#each dice as |d idx|}}
+        {{#if d.used}}
+            <li class="{{#if d.isChaos}}chaos-dice{{/if}}"{{#if d.isChaos}}title="chaos dice"{{/if}}>{{d.value}}</li>
+        {{/if}}
+    {{/each}}
+</ul>
+
+<ul class="roll-list rest-dice">
+    {{#each dice as |d idx|}}
+        {{#unless d.used}}
+            <li class="{{#if d.isChaos}}chaos-dice{{/if}}">{{d.value}}</li>
+        {{/unless}}
+    {{/each}}
+</ul>
+

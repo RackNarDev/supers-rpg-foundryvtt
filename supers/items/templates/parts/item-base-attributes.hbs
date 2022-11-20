@@ -1,0 +1,20 @@
+<div style="display:flex;gap:1rem;align-items:center">
+    <img src="{{item.img}}" data-edit="img" title="{{item.name}}" height="64" width="64"/>
+    <div>
+        <label>
+            {{ localize 'SUPERS.Name' }}
+            <input name="name" type="text" value="{{item.name}}"/>
+        </label>
+
+        <label>
+            {{ localize 'SUPERS.De' }}
+            <input name="data.de" type="text" value="{{s_i_value 'de'}}"/>
+        </label>
+
+        <label>
+            {{ localize 'SUPERS.StartRating' }}
+            <input name="data.rating" type="text" value="{{s_i_value 'rating'}}"/>
+        </label>
+
+    </div>
+</div>

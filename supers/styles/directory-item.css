@@ -1,0 +1,61 @@
+
+.directory-item .document-name {
+    display: flex;
+}
+
+.directory-item .document-name a {
+    align-items: stretch;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    line-height: 1;
+    width: calc(100% - 1rem)
+}
+
+.directory-item .document-name .name {
+    border-bottom: 1px solid;
+    font-size: 18px;
+    overflow: hidden;
+    padding: 0 0.5rem;
+    text-overflow: ellipsis;
+}
+
+.directory-item .document-name .type {
+    font-size: 0.9em;
+    font-style: italic;
+    padding: 0 0.5rem;
+    text-align: right;
+}
+
+.directory-item.supers-advantages-item,
+.directory-item.supers-advantages-folder,
+.directory-item.supers-advantages-folder > .folder-header,
+.directory-item.supers-advantages-folder > .folder-header h3,
+.directory-item.supers-advantages-folder.folder.collapsed > .folder-header {
+    background-color: #9cdd97;
+    color: #333333;
+}
+
+.directory-item.supers-powers-item,
+.directory-item.supers-powers-folder,
+.directory-item.supers-powers-folder > .folder-header,
+.directory-item.supers-powers-folder > .folder-header h3,
+.directory-item.supers-powers-folder.folder.collapsed > .folder-header {
+    background-color: #dfcd7c;
+    color: #333333;
+}
+
+
+.directory-item.supers-advantage-item,
+.directory-item.supers-disadvantage-item,
+.directory-item.supers-power-item,
+.directory-item.supers-aptitude-item {
+    padding: 0.5rem 0;
+}
+
+.directory-item.supers-advantage-item .thumbnail,
+.directory-item.supers-disadvantage-item .thumbnail,
+.directory-item.supers-power-item .thumbnail,
+.directory-item.supers-aptitude-item .thumbnail {
+    display: none;
+}

@@ -1,0 +1,43 @@
+<form class="s_as__actor-sheet actor-hero-sheet {{cssClass}}" autocomplete="off">
+
+    <header class="s_as__header">
+
+        <img class="s_as__header__img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}"
+             height="192" width="192" alt="{{actor.name}}"/>
+
+        <h1 class="s_as__header__name">
+            <input name="name" type="text" value="{{actor.name}}" placeholder="{{ localize 'SUPERS.Name' }}"/>
+        </h1>
+
+        <aside class="s_as__header__info">
+            <div class="total-dice">
+                {{ localize 'SUPERS.TotalDice' }}:  {{> (cmp 'costs') costs=Costs.Total}}
+            </div>
+        </aside>
+
+    </header>
+
+
+    <main class="s_as__main">
+
+        <div class="s_as__main__c1">
+            {{> (actorPart 'resistance-panel') }}
+            {{> (actorPart 'competency-panel') }}
+        </div>
+
+        <div class="s_as__main__c2">
+            {{> (actorPart 'advantages-disadvantages-panel') }}
+            {{> (actorPart 'aptitudes-panel') }}
+        </div>
+
+        <div class="s_as__main__c3">
+            {{> (actorPart 'powers-panel') }}
+        </div>
+
+        <div class="s_as__main__c3">
+            {{> (actorPart 'equipment-panel') }}
+        </div>
+
+    </main>
+</form>
+

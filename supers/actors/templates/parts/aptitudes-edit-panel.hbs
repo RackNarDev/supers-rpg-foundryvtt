@@ -1,0 +1,29 @@
+<div class="s_as__edit-panel">
+
+    <h4 class="s_as__edit-panel__header">{{localize 'SUPERS.Note'}}</h4>
+
+    {{> (cmp 'inline-edit') this value=data.note field='data.note' }}
+
+    {{#if data.specializations.length}}
+        <h4 class="s_as__edit-panel__header">{{localize 'SUPERS.Specialization'}}</h4>
+    {{/if}}
+
+    {{#if data.specializations.length}}
+
+        <div class="s_as__aptitudes-list__specializations{{stateClass 'edit' data.state}}" data-id="{{_id}}">
+
+            {{#each data.specializations as |specialization idx|}}
+
+                {{> (cmp 'inline-edit') index=(concat '' idx) _id=../this._id target='specializations' value=label field='label' placeholder='SUPERS.Specialization' }}
+                {{> (cmp 'inline-edit') index=(concat '' idx) _id=../this._id target='specializations' value=rating field='rating' cmpClass='s_as__center' }}
+                {{> (cmp 'delete-btn') index=(concat '' idx) _id=../this._id target='specializations' title='SUPERS.deleteSpecializations'  }}
+
+            {{/each}}
+
+        </div>
+
+    {{/if}}
+
+    {{> (cmp 'add-btn') this target='specializations' label='SUPERS.addSpecialization' }}
+
+</div>

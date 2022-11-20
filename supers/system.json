@@ -1,0 +1,68 @@
+{
+  "name": "supers",
+  "title": "Supers!",
+  "description": "Supers!",
+  "version": "0.1.0",
+  "templateVersion": 2,
+  "author": "RackNar",
+  "url": "https://github.com/RackNarDev/supers-rpg-foundryvtt",
+  "manifest": "https://github.com/RackNarDev/supers-rpg-foundryvtt/releases/latest/download/system.json",
+  "download": "https://github.com/RackNarDev/supers-rpg-foundryvtt/latest/download/supers.zip",
+  "minimumCoreVersion": "0.8.0",
+  "compatibleCoreVersion": "9",
+  "scripts": [],
+  "esmodules": [
+    "supers.js"
+  ],
+  "styles": [
+    "actors/styles/actor-sheet.css",
+    "chat/styles/chat.css",
+    "styles/directory-item.css"
+  ],
+  "packs": [
+    {
+      "name": "Powers",
+      "label": "Powers",
+      "system": "supers",
+      "path": "packs/powers.db",
+      "entity": "Item"
+    },
+    {
+      "name": "Aptitudes",
+      "label": "Aptitudes",
+      "system": "supers",
+      "path": "packs/aptitudes.db",
+      "entity": "Item"
+    },
+    {
+      "name": "Advantages",
+      "label": "Advantages",
+      "system": "supers",
+      "path": "packs/advantages.db",
+      "entity": "Item"
+    },
+    {
+      "name": "Disadvantages",
+      "label": "Disadvantages",
+      "system": "supers",
+      "path": "packs/disadvantages.db",
+      "entity": "Item"
+    }
+  ],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    },
+    {
+      "lang": "de",
+      "name": "Deutsch",
+      "path": "lang/de.json"
+    }
+  ],
+  "socket": false,
+  "initiative": "",
+  "gridDistance": 1.5,
+  "gridUnits": "m"
+}
