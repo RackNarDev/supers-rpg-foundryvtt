@@ -7,7 +7,7 @@
   "author": "RackNar",
   "url": "https://github.com/RackNarDev/supers-rpg-foundryvtt",
   "manifest": "https://github.com/RackNarDev/supers-rpg-foundryvtt/releases/latest/download/system.json",
-  "download": "https://github.com/RackNarDev/supers-rpg-foundryvtt/latest/download/supers.zip",
+  "download": "https://github.com/RackNarDev/supers-rpg-foundryvtt/releases/latest/download/supers.zip",
   "minimumCoreVersion": "0.8.0",
   "compatibleCoreVersion": "9",
   "scripts": [],
