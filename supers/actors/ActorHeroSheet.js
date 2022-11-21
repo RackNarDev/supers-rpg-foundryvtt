@@ -182,6 +182,8 @@ export class SupersHeroActorSheet extends ActorSheet {
       list.splice(parseInt(index), 1);
       Log.fine(`_onDeleteItem() list (new):`, list);
 
+      // TODO: Confirm dialog
+
       return item.update({[`data.${target}`]: list});
 
     }
