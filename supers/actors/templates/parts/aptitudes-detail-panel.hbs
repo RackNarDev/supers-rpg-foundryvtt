@@ -1,10 +1,10 @@
-{{#if data.specializations.length}}
+{{#if system.specializations.length}}
 
     <div class="s_as__detail-panel">
 
         <div class="s_as__aptitudes-list__specializations" data-id="{{_id}}">
 
-            {{#each data.specializations}}
+            {{#each system.specializations}}
 
                 {{> (cmp 'dice-roll') amount=rating rollaction=label dicemax='3'}}
 

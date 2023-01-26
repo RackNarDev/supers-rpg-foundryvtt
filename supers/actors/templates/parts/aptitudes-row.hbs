@@ -1,24 +1,24 @@
-{{> (cmp 'dice-roll') amount=data.rating rollaction=(s_i_i18n this) dicemax='3'}}
+{{> (cmp 'dice-roll') amount=system.rating rollaction=(s_i_i18n this) dicemax='3'}}
 
-<span class="s_as__ability-panel__text{{stateClass 'edit' data.state}}">
-    {{s_i_i18n this }} {{> (cmp 'costs') data}}
+<span class="s_as__ability-panel__text{{stateClass 'edit' system.state}}">
+    {{s_i_i18n this }} {{> (cmp 'costs') system}}
 
-    {{#if (eq data.state 'edit')}}
+    {{#if (eq system.state 'edit')}}
         {{> (cmp 'delete-btn') this action='delete-item' title='SUPERS.deleteAptitude'}}
     {{else}}
-        {{#if data.note}}<em class="s_as__ability-list__note">{{data.note}}</em>{{/if}}
+        {{#if system.note}}<em class="s_as__ability-list__note">{{system.note}}</em>{{/if}}
     {{/if}}
 </span>
 
-{{#if (eq data.state 'edit')}}
-    {{> (cmp 'inline-edit') this value=data.rating field='data.rating' cmpClass='s_as__center'}}
+{{#if (eq system.state 'edit')}}
+    {{> (cmp 'inline-edit') this value=system.rating field='system.rating' cmpClass='s_as__center'}}
 {{else}}
-    <span class="s_as__ability-panel__text s_as__center">{{data.rating}}</span>
+    <span class="s_as__ability-panel__text s_as__center">{{system.rating}}</span>
 {{/if}}
 
-{{> (cmp 'edit-item-btn') this action='edit-item' active=(eq data.state 'edit') title='SUPERS.editAptitude'}}
+{{> (cmp 'edit-item-btn') this action='edit-item' active=(eq system.state 'edit') title='SUPERS.editAptitude'}}
 
-{{#if (eq data.state 'edit')}}
+{{#if (eq system.state 'edit')}}
     {{>  (actorPart 'aptitudes-edit-panel') this }}
 {{else}}
     {{>  (actorPart 'aptitudes-detail-panel') this }}

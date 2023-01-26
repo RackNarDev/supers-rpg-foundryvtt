@@ -1,5 +1,5 @@
 Handlebars.registerHelper('s_a_value', function(key, ...args) {
-  const valuesRoot = this.actor.data.data;
+  const valuesRoot = this.data.system;
   let t = valuesRoot[key] || '';
   if (args.length > 1) {
     for (let i = 0; i < args.length - 1; i++) { // Last arg are the handlebar options
@@ -11,7 +11,8 @@ Handlebars.registerHelper('s_a_value', function(key, ...args) {
 });
 
 Handlebars.registerHelper('s_i_value', function(key, ...args) {
-  const valuesRoot = this.item.data.data;
+  // const valuesRoot = this.item.data.system;
+  const valuesRoot = this.item.system;
 
   let t = valuesRoot[key] || '';
   if (args.length > 1) {
@@ -28,7 +29,8 @@ Handlebars.registerHelper('s_i18n', function(key, ...args) {
 });
 
 Handlebars.registerHelper('s_i_i18n', function(item, ...args) {
-  const valuesRoot = item.data;
+  // const valuesRoot = item.data;
+  const valuesRoot = item.system;
   return valuesRoot[game.i18n.lang] || valuesRoot['en'] || item.name;
 });
 
