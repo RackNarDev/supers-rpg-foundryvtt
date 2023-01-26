@@ -1,10 +1,10 @@
 <div class="s_as__edit-panel">
 
-    {{#if data.edges.length}}
+    {{#if system.edges.length}}
 
         <div class="s_as__powers-list__edges" data-id="{{_id}}">
 
-            {{#each data.edges as |edge idx|}}
+            {{#each system.edges as |edge idx|}}
 
                 <select class="s_as__powers-list__edges__type" data-action="inline-edit" data-target="edges"
                         data-field="type" data-id="{{../this._id }}" data-index="{{idx}}">

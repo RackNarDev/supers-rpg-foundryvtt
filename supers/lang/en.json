@@ -1,16 +1,27 @@
 {
+  "SETTINGS": {
+    "useChaosDice": {
+      "hint": "Use the optional rule Chaos-Dice",
+      "name": "Use chaos dice"
+    }
+  },
   "SUPERS": {
     "Advantage": "Advantage",
     "Advantages": "Advantages",
     "AdvantagesDisadvantages": "Advantages & Disadvantages",
+    "Annotation": "Annotation",
     "Aptitude": "Aptitude",
     "Aptitudes": "Aptitudes",
     "Boost": "Boost",
     "Boosts": "Boosts",
+    "Competency": "Competency",
     "Complication": "Complication",
     "Complications": "Complications",
     "Composure": "Composure",
+    "Current": "Current",
+    "D": "D",
     "De": "German",
+    "DiceRoll": "Dice roll",
     "Disadvantage": "Disadvantage",
     "Disadvantages": "Disadvantages",
     "Edge": "Edge",
@@ -19,13 +30,19 @@
     "Equipment": "Equipment",
     "Equipments": "Equipments",
     "Fortitude": "Fortitude",
+    "Max": "Max",
     "Name": "Name",
+    "None": "None",
+    "Note": "Note",
     "Power": "Power",
     "Powers": "Powers",
     "Rating": "Rating",
     "Reaction": "Reaction",
     "Resistances": "Resistances",
     "Specialization": "Specialization",
+    "StartRating": "Startrating",
+    "Temp": "Temp",
+    "TotalDice": "Total Dice",
     "TradeOff": "Trade Off",
     "TradeOffs": "Trade Offs",
     "Will": "Will",
@@ -33,28 +50,14 @@
     "addSpecialization": "add Specialization",
     "current": "current",
     "delete": "delete",
-    "remove": "remove",
     "deleteAptitude": "delete Aptitude",
     "deletePower": "delete Power",
     "deletePowerEdge": "delete Edge",
-    "deleteSpecializations": "delete Specializations",
     "deleteSpecialization": "delete Specialization",
+    "deleteSpecializations": "delete Specializations",
     "max": "max",
     "name": "name",
-    "Annotation": "Annotation",
-    "Note": "Note",
-    "D": "D",
-    "Current": "Current",
-    "Max": "Max",
-    "Temp": "Temp",
-    "Competency": "Competency",
-    "TotalDice": "Total Dice",
-    "StartRating": "Startrating"
-  },
-  "SETTINGS": {
-    "useChaosDice": {
-      "name": "Use chaos dice",
-      "hint": "Use the optional rule Chaos-Dice"
-    }
+    "none": "none",
+    "remove": "remove"
   }
 }

@@ -8,7 +8,7 @@ export async function chatRollTheDice(diceAmount, rollaction, diceMax, actor) {
   Log.fine('chatRollTheDice() optionsChaosDice :', optionsChaosDice);
 
   const rollFormula = optionsChaosDice ? `${diceAmount - 1}d6 + 1d6x` : `${diceAmount}d6`;
-  const roll = await new Roll(rollFormula).roll();
+  const roll = await new Roll(rollFormula).evaluate({async: true});
   const dice = roll?.terms[0]?.results?.map((i, idx) => ({value: i.result, isChaos: false, idx}));
   Log.fine('chatRollTheDice() data :', {rollFormula, roll, dice});
 

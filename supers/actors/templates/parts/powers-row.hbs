@@ -1,19 +1,22 @@
-{{> (cmp 'dice-roll') amount=data.rating rollaction=(s_i_i18n this)}}
+{{> (cmp 'dice-roll') amount=system.rating rollaction=(s_i_i18n this)}}
 
 <div class="s_as__ability-panel__text">
-    {{s_i_i18n this }} {{> (cmp 'costs') data}}
+    {{s_i_i18n this }} {{> (cmp 'costs') system}}
+    {{#if (eq system.state 'edit')}}
+        {{> (cmp 'delete-btn') this  title='SUPERS.deletePower' }}
+    {{/if}}
 </div>
 
 
-{{#if (eq data.state 'edit')}}
-    {{> (cmp 'inline-edit') this value=data.rating field='data.rating' cmpClass='s_as__center' }}
+{{#if (eq system.state 'edit')}}
+    {{> (cmp 'inline-edit') this value=system.rating field='system.rating' cmpClass='s_as__center' }}
 {{else}}
-    <span class="s_as__ability-panel__text s_as__center">{{data.rating}}</span>
+    <span class="s_as__ability-panel__text s_as__center">{{system.rating}}</span>
 {{/if}}
 
-{{> (cmp 'edit-item-btn') this action='edit-item' active=(eq data.state 'edit') title='SUPERS.editPower'}}
+{{> (cmp 'edit-item-btn') this action='edit-item' active=(eq system.state 'edit') title='SUPERS.editPower'}}
 
-{{#if (eq data.state 'edit')}}
+{{#if (eq system.state 'edit')}}
     {{>  (actorPart 'powers-edit-panel') this }}
 {{else}}
     {{>  (actorPart 'powers-detail-panel') this }}

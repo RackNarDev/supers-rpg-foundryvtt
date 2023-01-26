@@ -1,10 +1,14 @@
-{{#if data.edges.length}}
+{{#if system.edges.length}}
 
     <div class="s_as__detail-panel" data-id="{{_id}}">
 
-        {{#each data.edges}}
+        {{#each system.edges}}
             {{#unless (eq type "Info")}}{{s_i18n type}}:{{/unless}}
-            {{label}}{{#unless (eq type "Info")}} {{/unless}}{{rating}}{{#unless @last}},{{/unless}}
+            {{label}}
+            {{#unless (eq type "Info")}}
+                [{{rating}}]
+            {{/unless}}
+            {{#unless @last}},{{/unless}}
         {{/each}}
 
     </div>

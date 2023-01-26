@@ -6,7 +6,8 @@ export function customizeItemDirectoryAppearance(app, html) {
     }
 
     htmlEntry.addClass(`supers-${o.type.toLowerCase()}-item`);
-    const valuesRoot = o.data.data;
+
+    const valuesRoot = o.system;
     const label = valuesRoot[game.i18n.lang] || valuesRoot['en'] || o.name;
     const itemType = game.i18n.format(`SUPERS.${o.type}`);
     const header = htmlEntry.find('.document-name a');

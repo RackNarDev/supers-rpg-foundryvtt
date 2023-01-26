@@ -1,16 +1,27 @@
 {
+  "SETTINGS": {
+    "useChaosDice": {
+      "hint": "Optionale Regel: Chaoswürfel",
+      "name": "Chaoswürfel"
+    }
+  },
   "SUPERS": {
     "Advantage": "Vorteil",
     "Advantages": "Vorteile",
     "AdvantagesDisadvantages": "Vor- & Nachteile",
+    "Annotation": "Anmerkung",
     "Aptitude": "Talent",
     "Aptitudes": "Talente",
     "Boost": "Boost",
     "Boosts": "Boosts",
+    "Competency": "Kompetenz",
     "Complication": "Komplikation",
     "Complications": "Komplikationen",
     "Composure": "Haltung",
+    "Current": "Aktuell",
+    "D": "W",
     "De": "Deutsch",
+    "DiceRoll": "Würfelwurf",
     "Disadvantage": "Nachteil",
     "Disadvantages": "Nachteile",
     "Edge": "Edge",
@@ -19,13 +30,17 @@
     "Equipment": "Ausrüstung",
     "Equipments": "Ausrüstungen",
     "Fortitude": "Zähigkeit",
+    "Max": "Max",
     "Name": "Name",
+    "None": "Keine",
+    "Note": "Notiz",
     "Power": "Kraft",
     "Powers": "Kräfte",
     "Rating": "Würfel",
     "Reaction": "Reaktion",
     "Resistances": "Resistenzen",
     "Specialization": "Spezialisierung",
+    "Temp": "Temp",
     "TradeOff": "Ausgleich",
     "TradeOffs": "Ausgleich",
     "Will": "Wille",
@@ -39,18 +54,6 @@
     "deleteSpecializations": "Spezialisierung entfernen",
     "max": "max",
     "name": "name",
-    "Annotation": "Anmerkung",
-    "Note": "Notiz",
-    "D": "W",
-    "Current": "Aktuell",
-    "Max": "Max",
-    "Temp": "Temp",
-    "Competency": "Kompetenz"
-  },
-  "SETTINGS": {
-    "useChaosDice": {
-      "name": "Chaoswürfel",
-      "hint": "Optionale Regel: Chaoswürfel"
-    }
+    "none": "keine"
   }
 }

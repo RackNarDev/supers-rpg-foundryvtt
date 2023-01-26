@@ -1,4 +1,5 @@
 import {chatRollTheDice} from '../chat/chat-roll-the-dice.js';
+import {parseToPositiveNumber} from '../system/validate.js';
 import {Log} from '../system/logger.js';
 
 export class SupersHeroActorSheet extends ActorSheet {
@@ -22,19 +23,20 @@ export class SupersHeroActorSheet extends ActorSheet {
     dataRoot.Costs = {};
 
     let resistancesCosts = 0;
-    for (let [key, value] of Object.entries(dataRoot.actor.data.data.Resistances)) {
-      resistancesCosts += Math.max(parseInt(value.max) - 1, 0);
+
+    for (let [_, value] of Object.entries(dataRoot.data.system.Resistances)) {
+      resistancesCosts += Math.max(parseToPositiveNumber(value.max) - 1, 0);
     }
     dataRoot.Costs.Resistances = resistancesCosts;
 
     let aptitudesCost = 0;
     dataRoot.Aptitudes.forEach(i => {
-      i.data.costs = Math.max(parseInt(i.data.rating) - 1);
-      aptitudesCost += i.data.costs;
+      i.system.costs = Math.max(parseToPositiveNumber(i.system.rating) - 1, 0);
+      aptitudesCost += i.system.costs;
 
-      if (i.data.specializations.length > 0) {
-        i.data.specializations.forEach(s => {
-          s.costs = Math.max(parseInt(s.rating) - parseInt(i.data.rating), 0);
+      if (i.system.specializations.length > 0) {
+        i.system.specializations.forEach(s => {
+          Math.max(s.costs = parseToPositiveNumber(s.rating) - parseToPositiveNumber(i.system.rating), 0);
           aptitudesCost += s.costs;
         });
       }
@@ -44,37 +46,35 @@ export class SupersHeroActorSheet extends ActorSheet {
 
     let disAdvantagesCost = 0;
     dataRoot.Advantages.forEach(i => {
-      disAdvantagesCost += Math.max(parseInt(i.data.rating), 0);
+      disAdvantagesCost += parseToPositiveNumber(i.system.rating);
     });
 
     dataRoot.Disadvantages.forEach(i => {
-      disAdvantagesCost -= parseInt(i.data.rating);
+      disAdvantagesCost -= parseToPositiveNumber(i.system.rating);
     });
 
     dataRoot.Costs.DisAdvantages = disAdvantagesCost;
 
     let powersCost = 0;
     dataRoot.Powers.forEach(i => {
-      let costs = 0;
-      costs += Math.max(parseInt(i.data.rating), 0);
-      if (i.data.edges.length > 0) {
-        i.data.edges.forEach(s => {
-          if (s.type === 'boost') {
-            costs += parseInt(s.rating);
+      let costs = parseToPositiveNumber(i.system.rating);
+      if (i.system.edges.length > 0) {
+        i.system.edges.forEach(s => {
+          if (s.type.toLowerCase() === 'boost') {
+            costs += parseToPositiveNumber(s.rating);
           }
-          if (s.type === 'complication') {
-            costs -= parseInt(s.rating);
+          if (s.type.toLowerCase() === 'complication') {
+            costs -= parseToPositiveNumber(s.rating);
           }
         });
       }
 
-      i.data.costs = costs;
+      i.system.costs = costs;
       powersCost += costs;
     });
     dataRoot.Costs.Powers = powersCost;
 
-    // console.log(dataRoot.data.data);
-    dataRoot.Costs.Competency = Number(dataRoot.data.data.Competency.max);
+    dataRoot.Costs.Competency = parseToPositiveNumber(dataRoot.data.system.Competency.max);
 
     dataRoot.Costs.Total = dataRoot.Costs.Competency +
         dataRoot.Costs.Powers +
@@ -124,7 +124,7 @@ export class SupersHeroActorSheet extends ActorSheet {
       }
 
       const index = element.dataset.index;
-      const list = item.data.data[target] || [];
+      const list = item.system[target] || [];
       Log.fine(`_onEditItem() list:`, list);
 
       list[index][field] = value;
@@ -140,7 +140,7 @@ export class SupersHeroActorSheet extends ActorSheet {
         return;
       }
 
-      if (item.data.type === 'Aptitude' && field === 'data.rating') {
+      if (item.system.type === 'Aptitude' && field === 'data.rating') {
         value = Math.min(3, value); // Aptitude Aptitudes are limited to 3
       }
 
@@ -172,7 +172,7 @@ export class SupersHeroActorSheet extends ActorSheet {
       }
 
       const index = element.dataset.index;
-      const list = item.data.data[target] || [];
+      const list = item.system[target] || [];
       Log.fine(`_onDeleteItem() list:`, list);
 
       if (!list[index]) {
@@ -214,7 +214,7 @@ export class SupersHeroActorSheet extends ActorSheet {
       }
 
       const index = element.dataset.index;
-      const list = item.data.data[target] || [];
+      const list = item.system[target] || [];
       Log.fine(`_onAddItem() list:`, list);
 
       list.push({...defaultData[target]});
@@ -234,7 +234,7 @@ export class SupersHeroActorSheet extends ActorSheet {
       return;
     }
 
-    const state = item.data.data.state === 'edit' ? '' : 'edit';
+    const state = item.system.state === 'edit' ? '' : 'edit';
 
     return item.update({['data.state']: state});
   }

@@ -2,7 +2,7 @@
 
     {{> (actorPart 'panel-header') title='SUPERS.Equipments' costs=Costs.Equipments}}
 
-    <div class="s_as__equipment-list {{#if (eq data.state 'edit')}}state__edit{{/if}}">
+    <div class="s_as__equipment-list {{#if (eq system.state 'edit')}}state__edit{{/if}}">
         {{#each Equipments as |Equipment id|}}
             {{Equipment.name}}<br>
         {{/each}}
