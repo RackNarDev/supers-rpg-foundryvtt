@@ -2,16 +2,20 @@
 
     <div class="s_as__detail-panel">
 
-        <div class="s_as__aptitudes-list__specializations" data-id="{{_id}}">
+        <div class="s_as__aptitudes-list__specializations">
 
             {{#each system.specializations}}
+                {{#if (gt rating 0)}}
 
-                {{> (cmp 'dice-roll') amount=rating rollaction=label dicemax='3'}}
+                    {{> (cmp 'dice-roll') amount=rating rollaction=label dicemax='3'}}
 
-                <span class="s_as__ability-panel__text">{{label}} {{> (cmp 'costs') this}}</span>
+                    <span class="s_as__ability-panel__text">{{label}} </span>
 
-                <span class="s_as__ability-panel__text s_as__center">{{rating}}</span>
+                    <span class="s_as__ability-panel__text-right">
+                        {{> (cmp 'costs') this}}
+                    </span>
 
+                {{/if}}
             {{/each}}
 
         </div>

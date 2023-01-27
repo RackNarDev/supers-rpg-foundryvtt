@@ -3,6 +3,7 @@ import {parseToPositiveNumber} from '../system/validate.js';
 import {Log} from '../system/logger.js';
 
 export class SupersHeroActorSheet extends ActorSheet {
+
   /** @override */
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
@@ -14,6 +15,7 @@ export class SupersHeroActorSheet extends ActorSheet {
   getData() {
     const dataRoot = super.getData();
 
+    dataRoot.editMode = !!this.editMode;
     dataRoot.Aptitudes = dataRoot.items.filter(i => i.type === 'Aptitude');
     dataRoot.Advantages = dataRoot.items.filter(i => i.type === 'Advantage');
     dataRoot.Disadvantages = dataRoot.items.filter(i => i.type === 'Disadvantage');
@@ -36,7 +38,9 @@ export class SupersHeroActorSheet extends ActorSheet {
 
       if (i.system.specializations.length > 0) {
         i.system.specializations.forEach(s => {
-          Math.max(s.costs = parseToPositiveNumber(s.rating) - parseToPositiveNumber(i.system.rating), 0);
+          const rating = Math.max(parseToPositiveNumber(s.rating), 3);
+          s.rating = rating;
+          s.costs = Math.max(rating - parseToPositiveNumber(i.system.rating), 0);
           aptitudesCost += s.costs;
         });
       }
@@ -94,6 +98,43 @@ export class SupersHeroActorSheet extends ActorSheet {
 
     html.find('[data-action="edit-item"]').click(this._onToggleEditItem.bind(this));
     html.find('[data-rolld6]').click(this._rollTheDice.bind(this));
+  }
+
+  _getHeaderButtons() {
+    const buttons = super._getHeaderButtons();
+
+    // Edit mode button to toggle which interactive elements are visible on the sheet.
+    const canConfigure = game.user?.isGM || this.actor.isOwner;
+
+    if (this.options.editable && canConfigure) {
+      buttons.unshift(
+          {
+            class: 'su_toggle-edit-mode',
+            label: game.i18n.localize('SUPERS.Buttons.ToggleEditMode'),
+            icon: 'fas fa-edit',
+            onclick: e => this._onToggleEditMode(e),
+          },
+      );
+    }
+
+    return buttons;
+  }
+
+  _onToggleEditMode(e) {
+    e.preventDefault();
+
+    this.editMode = !this.editMode;
+
+    const target = $(e.currentTarget);
+    const app = target.parents('.app');
+    const html = app.find('.window-content');
+    const focused = html.find(':focus');
+
+    focused.trigger('change');
+
+    setTimeout(() => {
+      this.actor.render(false);
+    }, 100);
   }
 
   _onEditItem(event) {
