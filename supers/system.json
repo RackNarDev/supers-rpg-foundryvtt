@@ -10,7 +10,7 @@
   "compatibility": {
     "maximum": 10,
     "minimum": 9,
-    "verified": "10.288"
+    "verified": "10.289"
   },
   "description": "Supers!",
   "download": "https://github.com/RackNarDev/supers-rpg-foundryvtt/releases/latest/download/supers.zip",
@@ -69,11 +69,10 @@
   "styles": [
     "actors/styles/actor-sheet.css",
     "chat/styles/chat.css",
-    "styles/directory-item.css",
-    "party/party-overview.css"
+    "styles/directory-item.css"
   ],
   "templateVersion": 2,
   "title": "Supers!",
   "url": "https://github.com/RackNarDev/supers-rpg-foundryvtt",
-  "version": "0.1.5"
+  "version": "0.1.5.1"
 }
