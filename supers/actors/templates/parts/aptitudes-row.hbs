@@ -1,25 +1,55 @@
-{{> (cmp 'dice-roll') amount=system.rating rollaction=(s_i_i18n this) dicemax='3'}}
-
-<span class="s_as__ability-panel__text{{stateClass 'edit' system.state}}">
-    {{s_i_i18n this }} {{> (cmp 'costs') system}}
-
-    {{#if (eq system.state 'edit')}}
-        {{> (cmp 'delete-btn') this action='delete-item' title='SUPERS.deleteAptitude'}}
-    {{else}}
-        {{#if system.note}}<em class="s_as__ability-list__note">{{system.note}}</em>{{/if}}
-    {{/if}}
-</span>
-
-{{#if (eq system.state 'edit')}}
+{{#if editMode}}
     {{> (cmp 'inline-edit') this value=system.rating field='system.rating' cmpClass='s_as__center'}}
-{{else}}
-    <span class="s_as__ability-panel__text s_as__center">{{system.rating}}</span>
-{{/if}}
 
-{{> (cmp 'edit-item-btn') this action='edit-item' active=(eq system.state 'edit') title='SUPERS.editAptitude'}}
+    <div class="s_as__ability-panel__text">
+        <strong>  {{s_i_i18n this }}</strong>
+        <span class="s_as__ability-panel__buttons">
+            {{> (cmp 'delete-btn') this action='delete-item' title='SUPERS.deleteAptitude'}}
+        </span>
+        <br>
+        <span class="s_as__ability-panel__note-input">
+            <span class="s_as__ability-panel__note-hint">{{localize 'SUPERS.Note'}}:</span>
+            {{> (cmp 'inline-edit') this value=system.note field='system.note' }}
+        </span>
 
-{{#if (eq system.state 'edit')}}
-    {{>  (actorPart 'aptitudes-edit-panel') this }}
+        {{#if (gt system.rating 2)}}
+
+            {{> (cmp 'add-btn') this target='specializations' label='SUPERS.addSpecialization' }}
+
+            {{#if system.specializations.length}}
+                <span class="s_as__aptitudes-list__specializations">
+                    {{#each system.specializations as |specialization idx| }}
+
+                            {{> (cmp 'inline-edit') index=(concat '' idx) _id=../this._id target='specializations' value=rating field='rating' cmpClass='s_as__center' }}
+                            {{> (cmp 'inline-edit') index=(concat '' idx) _id=../this._id target='specializations' value=label field='label' placeholder='SUPERS.Specialization' }}
+                            {{> (cmp 'delete-btn') index=(concat '' idx) _id=../this._id target='specializations' title='SUPERS.deleteSpecializations'  }}
+                            {{> (cmp 'costs') this}}
+
+                    {{/each}}
+                </span>
+
+            {{/if}}
+
+        {{/if}}
+    </div>
+
+    <span class="s_as__ability-panel__text-right">
+        {{> (cmp 'costs') system}}
+    </span>
+
 {{else}}
+
+    {{> (cmp 'dice-roll') amount=system.rating rollaction=(s_i_i18n this) dicemax='3'}}
+
+    <span class="s_as__ability-panel__text">
+        {{s_i_i18n this }}
+        {{#if system.note}}<em class="s_as__ability-list__note">{{system.note}}</em>{{/if}}
+    </span>
+
+    <span class="s_as__ability-panel__text-right">
+        {{> (cmp 'costs') system}}
+    </span>
+
     {{>  (actorPart 'aptitudes-detail-panel') this }}
+
 {{/if}}

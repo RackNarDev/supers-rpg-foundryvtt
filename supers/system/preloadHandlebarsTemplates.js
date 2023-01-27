@@ -24,6 +24,7 @@ export async function preloadHandlebarsTemplates() {
 
     // components
     'systems/supers/template_components/add-btn.hbs',
+    'systems/supers/template_components/edit-btn.hbs',
     'systems/supers/template_components/costs.hbs',
     'systems/supers/template_components/delete-btn.hbs',
     'systems/supers/template_components/dice-roll.hbs',

@@ -23,8 +23,6 @@ FOUNDRY VERZEICHNIS
 │   ├─ worlds
 │   │  ...
 └── Logs
-
-ddd
 ```
 
 ## Projektsetup

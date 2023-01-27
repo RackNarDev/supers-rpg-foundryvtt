@@ -4,7 +4,7 @@
 
     <div class="s_as__powers-list">
         {{#each Powers}}
-            {{> (actorPart 'powers-row') this }}
+            {{> (actorPart 'powers-row') this editMode=../this.editMode }}
         {{/each}}
     </div>
 
