@@ -4,17 +4,32 @@
 
     <div class="s_as__competencies">
 
-        <span class="s_as__ability-panel__hint">{{ localize 'SUPERS.Current' }}</span>
-        <span class="s_as__ability-panel__hint">{{ localize 'SUPERS.Max' }}</span>
-        <span class="s_as__ability-panel__hint">{{ localize 'SUPERS.Temp' }}</span>
+        {{#if editMode}}
 
-        <input class="s_as__ability-panel__input s_as__center" name="system.Competency.current" type="text"
-               value="{{system.Competency.current}}"/>
-        <input class="s_as__ability-panel__input s_as__center" name="system.Competency.max" type="text"
-               value="{{system.Competency.max}}"/>
-        <input class="s_as__ability-panel__input s_as__center" name="system.Competency.temp" type="text"
-               value="{{system.Competency.temp}}"/>
+            <span>{{ localize 'SUPERS.Max' }} {{ localize 'SUPERS.Competency' }}</span>
+            <input class="s_as__ability-panel__input s_as__center" name="system.Competency.max" type="text"
+                   value="{{actor.system.Competency.max}}"/>
+
+            <span>{{ localize 'SUPERS.Temp' }}</span>
+            <span class="s_as__center">{{actor.system.Competency.temp}}</span>
+
+            <span>{{ localize 'SUPERS.Current' }}</span>
+            <span class="s_as__center">{{actor.system.Competency.max}}</span>
+
+        {{else}}
+
+            <span>{{ localize 'SUPERS.Max' }} {{ localize 'SUPERS.Competency' }}:</span>
+            <span class="s_as__center">{{actor.system.Competency.max}}</span>
+
+            <span>{{ localize 'SUPERS.Temp' }}</span>
+            <input class="s_as__ability-panel__input s_as__center" name="system.Competency.temp" type="text"
+                   value="{{actor.system.Competency.temp}}"/>
+
+            <span>{{ localize 'SUPERS.Current' }}</span>
+            <input class="s_as__ability-panel__input s_as__center" name="system.Competency.current" type="text"
+                   value="{{actor.system.Competency.current}}"/>
+
+        {{/if}}
 
     </div>
-
 </section>

@@ -1,4 +1,4 @@
-<form class="s_as__actor-sheet actor-hero-sheet {{cssClass}}" autocomplete="off">
+<form class="s_as__actor-sheet actor-hero-sheet {{cssClass}}{{#if editMode}} s_as_edit-mode{{/if}}" autocomplete="off">
 
     <header class="s_as__header">
 
@@ -6,7 +6,11 @@
              height="192" width="192" alt="{{actor.name}}"/>
 
         <h1 class="s_as__header__name">
-            <input name="name" type="text" value="{{actor.name}}" placeholder="{{ localize 'SUPERS.Name' }}"/>
+            {{#if editMode}}
+                <input name="name" type="text" value="{{actor.name}}" placeholder="{{ localize 'SUPERS.Name' }}"/>
+            {{else}}
+                {{actor.name}}
+            {{/if}}
         </h1>
 
         <aside class="s_as__header__info">

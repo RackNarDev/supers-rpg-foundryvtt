@@ -14,6 +14,9 @@
     "Aptitudes": "Aptitudes",
     "Boost": "Boost",
     "Boosts": "Boosts",
+    "Buttons": {
+      "ToggleEditMode": "Toggle edit mode"
+    },
     "Competency": "Competency",
     "Complication": "Complication",
     "Complications": "Complications",

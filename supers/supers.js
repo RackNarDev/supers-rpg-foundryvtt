@@ -6,6 +6,9 @@ import {Log} from './system/logger.js';
 
 import {SupersHeroActorSheet} from './actors/ActorHeroSheet.js';
 import {SupersItemSheet} from './items/ItemSheet.js';
+import PartyOverviewApp from './party/PartyOverviewApp.js';
+
+let partyOverview;
 
 Hooks.once('init', function() {
   Log.info('Initializing System');
@@ -27,5 +30,54 @@ Hooks.on('renderItemDirectory', async function(app, html, data) {
 
 Hooks.on('renderChatMessage', (app, html, data) => {
   // console.log({app});
+});
+
+Hooks.on('renderActorDirectory', (app, html, data) => {
+
+  if (!game.user.isGM) return;
+  if (!partyOverview) partyOverview = new PartyOverviewApp();
+
+  let button = $(`<button class="party-overview-button"><i class="fas fa-users"></i> Party Overview</button>`);
+  button.on('click', (e) => {
+    console.log('open overview');
+    partyOverview.render(true);
+  });
+
+  $(html).find('.header-actions').prepend(button);
+});
+
+Hooks.on('updateActor', (actor, data, options, userId) => {
+  if (!partyOverview) partyOverview = new PartyOverviewApp();
+  if (partyOverview.rendering && actor.hasPlayerOwner) {
+    partyOverview.render(false);
+  }
+});
+
+Hooks.on('updateToken', (token, data, options, userId) => {
+  if (!partyOverview) partyOverview = new PartyOverviewApp();
+  if (partyOverview.rendering && token.actor?.hasPlayerOwner) {
+    partyOverview.render(false);
+  }
+});
+
+Hooks.on('createToken', (token, options, userId) => {
+  if (!partyOverview) partyOverview = new PartyOverviewApp();
+  if (partyOverview.rendering && game.actors.contents.find((actor) => actor.id === token.actor.id).hasPlayerOwner) {
+    partyOverview.render(false);
+  }
+});
+
+Hooks.on('deleteActor', (actor, options, userId) => {
+  if (!partyOverview) partyOverview = new PartyOverviewApp();
+  if (partyOverview.rendering && actor.hasPlayerOwner) {
+    partyOverview.render(false);
+  }
+});
+
+Hooks.on('deleteToken', (token, options, userId) => {
+  if (!partyOverview) partyOverview = new PartyOverviewApp();
+  if (partyOverview.rendering && token.actor?.hasPlayerOwner) {
+    partyOverview.render(false);
+  }
 });
 

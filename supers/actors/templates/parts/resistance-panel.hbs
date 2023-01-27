@@ -4,13 +4,18 @@
 
     <div class="s_as__resistances-list">
 
-        <span class="s_as__ability-panel__hint">{{ localize 'SUPERS.current' }}</span>
-        <span class="s_as__ability-panel__hint">{{ localize 'SUPERS.max' }}</span>
+        {{#if editMode}}
+            <span class="s_as__ability-panel__hint row-spreading">
+                <span>{{ localize 'SUPERS.max' }}</span> <span>{{ localize 'SUPERS.current' }}</span>
+            </span>
+        {{else}}
+            <span class="s_as__ability-panel__hint row-end">{{ localize 'SUPERS.current' }}</span>
+        {{/if}}
 
-        {{> (actorPart 'resistance-row') key='Composure' }}
-        {{> (actorPart 'resistance-row') key='Fortitude' }}
-        {{> (actorPart 'resistance-row') key='Reaction' }}
-        {{> (actorPart 'resistance-row') key='Will' }}
+        {{> (actorPart 'resistance-row') key='Composure' editMode=editMode }}
+        {{> (actorPart 'resistance-row') key='Fortitude' editMode=editMode }}
+        {{> (actorPart 'resistance-row') key='Reaction' editMode=editMode }}
+        {{> (actorPart 'resistance-row') key='Will' editMode=editMode }}
 
     </div>
 

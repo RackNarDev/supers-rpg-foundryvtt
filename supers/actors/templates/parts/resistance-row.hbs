@@ -1,9 +1,22 @@
-{{> (cmp 'dice-roll') amount=(s_a_value 'Resistances' key 'current') rollaction=(s_i18n key)}}
+{{#if editMode}}
 
-<span class="s_as__ability-panel__text">{{s_i18n key}}</span>
+    <input class="s_as__ability-panel__input s_as__center" name="system.Resistances.{{key}}.max" type="text"
+           value="{{s_a_value 'Resistances' key 'max' }}"/>
 
-<input class="s_as__ability-panel__input s_as__center" name="system.Resistances.{{key}}.current" type="text"
-       value="{{s_a_value  'Resistances' key 'current' }}"/>
+    <span class="s_as__ability-panel__text">{{s_i18n key}}</span>
 
-<input class="s_as__ability-panel__input s_as__center" name="system.Resistances.{{key}}.max" type="text"
-       value="{{s_a_value 'Resistances' key 'max' }}"/>
+    <span>{{s_a_value  'Resistances' key 'current' }}</span>
+{{else}}
+
+    {{> (cmp 'dice-roll') amount=(s_a_value 'Resistances' key 'current') rollaction=(s_i18n key)}}
+
+    <span class="s_as__ability-panel__text">{{s_i18n key}} (max. {{s_a_value 'Resistances' key 'max' }})</span>
+
+    <input class="s_as__ability-panel__input s_as__center" name="system.Resistances.{{key}}.current" type="text"
+           value="{{s_a_value  'Resistances' key 'current' }}"/>
+{{/if}}
+
+
+
+
+

@@ -1,38 +1,33 @@
 <strong class="s_as__ability-panel__strong">{{ localize label }}</strong> :
+{{#if editMode }}<br>{{/if}}
 {{#unless items.length}}{{ localize 'SUPERS.none' }}{{/unless}}
 
 {{#each items}}
 
-                  <span class="s_as__inline_icons_container">
+    {{#if ../this.editMode }}
 
-        <span class="{{#if (eq system.state 'edit')}} state__edit{{/if}}">
+        <span class="s_as__inline_popup__title">
+            {{s_i_i18n this}}
+            {{> (cmp 'delete-btn') this action='delete-item' title='SUPERS.delete'}}
+        </span>
+        <span class="s_as__dis-advantage-panel__input">
+            {{localize 'SUPERS.Rating'}}
+            {{> (cmp 'inline-edit') this value=system.rating field='system.rating' cmpClass='item__rating' }}
+
+            {{localize 'SUPERS.Note'}}
+            {{> (cmp 'inline-edit') this value=system.note field='system.note' cmpClass='item__note' placeholder='SUPERS.Note' }}
+        </span>
+
+    {{else}}
+
+        <span class="">
             {{s_i_i18n this}}
             [{{system.rating}}{{localize 'SUPERS.D'}}]
             {{#if system.note}}(<em class="note">{{system.note}}</em>){{/if}}
             {{#unless @last}},{{/unless}}
         </span>
 
-        <span class="s_as__item__inline_icons">
-            {{> (cmp 'edit-item-btn') this action='edit-item' active=(eq system.state 'edit') title='SUPERS.edit'}}
-            {{> (cmp 'delete-btn') this action='delete-item' title='SUPERS.delete'}}
-        </span>
+    {{/if}}
 
-        {{#if (eq system.state 'edit')}}
-
-            <span class="s_as__inline_popup">
-                <span class="s_as__inline_popup__title">{{s_i_i18n this}}</span>
-
-                {{localize 'SUPERS.Rating'}}
-                {{> (cmp 'inline-edit') this value=system.rating field='system.rating' cmpClass='item__rating' }}
-
-                {{localize 'SUPERS.Note'}}
-                {{> (cmp 'inline-edit') this value=system.note field='system.note' cmpClass='item__note' placeholder='SUPERS.Note' }}
-
-                {{> (cmp 'edit-item-btn') this action='edit-item' active=(eq system.state 'edit') title='SUPERS.edit' label='SUPERS.closeEdit'}}
-            </span>
-
-        {{/if}}
-
-    </span>
 
 {{/each}}

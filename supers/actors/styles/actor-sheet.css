@@ -203,8 +203,9 @@
 .s_as__resistances-list {
     align-items: center;
     column-gap: 0.5rem;
+    row-gap: 0.25rem;
     display: grid;
-    grid-template-columns: 1.2rem auto 5ch 5ch
+    grid-template-columns: 1.8rem auto 1.8rem
 }
 
 .s_as__resistances-list [data-rolld6] {
@@ -217,8 +218,22 @@
     grid-column-start: 2;
 }
 
-.s_as__resistances-list .s_as__ability-panel__hint:first-of-type {
-    grid-column-start: 3;
+.s_as__resistances-list .s_as__ability-panel__hint {
+    grid-column: 1 /span 3;
+}
+
+.s_as__ability-panel__hint.row-begin {
+    text-align: left;
+}
+
+.s_as__ability-panel__hint.row-end {
+    text-align: right;
+}
+
+.s_as__ability-panel__hint.row-spreading {
+    display: flex;
+    gap: 0.25rem;
+    justify-content: space-between;
 }
 
 /* ------------- */
@@ -234,6 +249,15 @@
     white-space: nowrap;
 }
 
+.s_as__dis-advantage-panel__input {
+    align-items: flex-start;
+    column-gap: 0.5rem;
+    row-gap: 0.25rem;
+    display: grid;
+    grid-template-columns: 3rem auto;
+    margin: 0 0 1rem;
+}
+
 /* --------- */
 /* Aptitudes */
 /* --------- */
@@ -241,8 +265,13 @@
 .s_as__aptitudes-list {
     align-items: center;
     column-gap: 0.5rem;
+    row-gap: 0.25rem;
     display: grid;
-    grid-template-columns: 1.2rem auto  2rem 1rem;
+    grid-template-columns: 1.8rem auto 3rem;
+}
+
+.s_as_edit-mode .s_as__aptitudes-list {
+    align-items: flex-start;
 }
 
 .s_as__aptitudes-list [data-rolld6] {
@@ -255,22 +284,57 @@
 
 .s_as__aptitudes-list .s_as__edit-panel,
 .s_as__aptitudes-list .s_as__detail-panel {
-    grid-column: 1 /span 4;
+    grid-column: 1 /span 3;
+}
+
+.s_as__ability-panel__rating {
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.s_as__ability-panel__text-small {
+    font-size: 0.8rem;
+}
+
+.s_as__ability-panel__text-right {
+    text-align: right;
+}
+
+.s_as__ability-panel__input {
+    max-height: 1.8rem !important;
+    border: none !important;
+}
+
+.s_as__ability-panel__buttons {
+    float: right;
+}
+
+.s_as__ability-panel__note-input {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.s_as__ability-panel__note-hint {
+    font-size: 0.8rem;
 }
 
 .s_as__aptitudes-list__specializations {
     column-gap: 0.5rem;
-    display: grid;
-    grid-template-columns: auto 2rem 1rem;
-    margin: 0 0 0.5rem;
     row-gap: 0.25rem;
+    display: grid;
+    grid-template-columns: 1.8rem auto 1rem 3rem;
+    margin: 0 0 0.5rem;
 }
 
 .s_as__detail-panel .s_as__aptitudes-list__specializations {
     align-items: center;
-    grid-template-columns: 1.2rem auto 2rem 1rem;
-    margin: 0 0 0.5rem 1.7rem;
-    row-gap: 0;
+    grid-template-columns: 1.8rem auto 3rem;
+    margin: 0 0 0.5rem 0.5rem;
+    row-gap: 0.25rem;
+}
+
+.s_as__detail-panel .s_as__aptitudes-list__specializations:empty {
+    display: none;
 }
 
 .s_as__aptitudes-list .s_as__edit-panel .s_btn_add {
@@ -288,8 +352,13 @@
 .s_as__powers-list {
     align-items: center;
     column-gap: 0.5rem;
+    row-gap: 0.25rem;
     display: grid;
-    grid-template-columns: 1.2rem auto 2rem 1rem;
+    grid-template-columns: 1.8rem auto 3rem;
+}
+
+.s_as_edit-mode .s_as__powers-list {
+    align-items: flex-start;
 }
 
 .s_as__powers-list [data-rolld6] {
@@ -312,14 +381,19 @@
     align-items: center;
     column-gap: 0.5rem;
     display: grid;
-    grid-column-start: 2;
-    grid-template-columns:  8rem auto 2rem 1rem;
+    grid-template-columns:  8rem auto 1.8rem 1rem;
     margin: 0 0 1rem;
     row-gap: 0.25rem;
 }
 
+.s_as_edit-mode .s_as__powers-list__edges {
+    align-items: flex-start;
+}
+
 .s_as__powers-list__edges__type {
     grid-column-start: 1;
+    max-height: 1.8rem;
+    border: none;
 }
 
 /* ---------- */
@@ -328,13 +402,32 @@
 
 .s_as__competencies {
     column-gap: 0.5rem;
+    row-gap: 0.25rem;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: auto 2rem;
     margin: 0 auto;
-    max-width: 25ch;
-    text-align: center;
 }
 
 /* ============================== */
 
+/* ---------- */
+/* Components */
+/* ---------- */
 
+.s_as_diceroller {
+    background-color: #000000;
+    color: yellow;
+    display: flex;
+    padding: 0.1rem 0.15rem;
+    border-radius: 0.25rem;
+    text-align: center;
+    font-size: 0.8rem;
+    width: 1.8rem;
+    height: 1.8rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.s_btn_add {
+    font-size: 0.8rem;
+}

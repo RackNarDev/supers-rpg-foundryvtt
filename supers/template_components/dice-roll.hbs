@@ -1,6 +1,7 @@
-<a data-rolld6="{{amount}}"
+<a class="s_as_diceroller"
+   data-rolld6="{{amount}}"
    data-rollaction="{{rollaction}}"
    {{#if dicemax}}data-dicemax="{{dicemax}}"{{/if}}
    title="{{localize 'SUPERS.RollFor'}} {{rollaction}}">
-    <img src="icons/svg/d20-highlight.svg">
+    {{amount}}{{localize 'SUPERS.D'}}
 </a>

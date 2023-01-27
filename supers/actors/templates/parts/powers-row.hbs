@@ -1,23 +1,77 @@
-{{> (cmp 'dice-roll') amount=system.rating rollaction=(s_i_i18n this)}}
-
-<div class="s_as__ability-panel__text">
-    {{s_i_i18n this }} {{> (cmp 'costs') system}}
-    {{#if (eq system.state 'edit')}}
-        {{> (cmp 'delete-btn') this  title='SUPERS.deletePower' }}
-    {{/if}}
-</div>
-
-
-{{#if (eq system.state 'edit')}}
+{{#if editMode}}
     {{> (cmp 'inline-edit') this value=system.rating field='system.rating' cmpClass='s_as__center' }}
+
+    <div class="s_as__ability-panel__text">
+        {{s_i_i18n this }}  {{> (cmp 'delete-btn') this  title='SUPERS.deletePower' }} <br>
+        {{> (cmp 'add-btn') this target='edges' label='SUPERS.addPowerEdge'}}
+
+        {{#if system.edges.length}}
+
+            <div class="s_as__powers-list__edges">
+
+                {{#each system.edges as |edge idx|}}
+
+                    <select class="s_as__powers-list__edges__type" data-action="inline-edit" data-target="edges"
+                            data-field="type" data-id="{{../this._id }}" data-index="{{idx}}">
+                        {{#select type}}
+                            <option value="Boost">{{ localize 'SUPERS.Boost' }}</option>
+                            <option value="Complication">{{ localize 'SUPERS.Complication' }}</option>
+                            <option value="TradeOff">{{ localize 'SUPERS.TradeOff' }}</option>
+                            <option value="Info">{{ localize 'SUPERS.Annotation' }}</option>
+                        {{/select}}
+                    </select>
+
+                    {{> (cmp 'inline-edit') index=(concat '' idx) _id=../this._id target='edges' value=label field='label'  placeholder='SUPERS.Edge' }}
+
+                    {{#unless (eq type "Info")}}
+                        {{> (cmp 'inline-edit') index=(concat '' idx) _id=../this._id target='edges' value=rating field='rating' cmpClass='s_as__center'}}
+                        {{> (cmp 'delete-btn') index=(concat '' idx) _id=../this._id target='edges' title='SUPERS.deletePowerEdge' }}
+                    {{/unless}}
+
+                {{/each}}
+
+            </div>
+
+        {{/if}}
+
+    </div>
+
+    <span class="s_as__ability-panel__text-right">
+        {{> (cmp 'costs') system}}
+    </span>
+
 {{else}}
-    <span class="s_as__ability-panel__text s_as__center">{{system.rating}}</span>
+
+    {{#if (gt system.rating 0)}}
+
+        {{> (cmp 'dice-roll') amount=system.rating rollaction=(s_i_i18n this)}}
+
+        <div class="s_as__ability-panel__text">
+
+            {{s_i_i18n this }}
+
+            {{#if system.edges.length}}
+                <span  class="s_as__ability-panel__text-small">
+                    (
+                    {{#each system.edges}}
+                        {{#unless (eq type "Info")}}{{s_i18n type}}:{{/unless}}
+                        {{label}}
+                        {{#unless (eq type "Info")}}
+                            [{{rating}}]
+                        {{/unless}}
+                        {{#unless @last}},{{/unless}}
+                    {{/each}}
+                    )
+                </span>
+            {{/if}}
+
+        </div>
+
+        <span class="s_as__ability-panel__text-right">
+            {{> (cmp 'costs') system}}
+        </span>
+
+    {{/if}}
+
 {{/if}}
 
-{{> (cmp 'edit-item-btn') this action='edit-item' active=(eq system.state 'edit') title='SUPERS.editPower'}}
-
-{{#if (eq system.state 'edit')}}
-    {{>  (actorPart 'powers-edit-panel') this }}
-{{else}}
-    {{>  (actorPart 'powers-detail-panel') this }}
-{{/if}}

@@ -69,7 +69,8 @@
   "styles": [
     "actors/styles/actor-sheet.css",
     "chat/styles/chat.css",
-    "styles/directory-item.css"
+    "styles/directory-item.css",
+    "party/party-overview.css"
   ],
   "templateVersion": 2,
   "title": "Supers!",
