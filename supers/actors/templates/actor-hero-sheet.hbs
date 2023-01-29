@@ -1,7 +1,6 @@
 <form class="s_as__actor-sheet actor-hero-sheet {{cssClass}}{{#if editMode}} s_as_edit-mode{{/if}}" autocomplete="off">
 
     <header class="s_as__header">
-
         <img class="s_as__header__img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}"
              height="192" width="192" alt="{{actor.name}}"/>
 
@@ -18,15 +17,28 @@
                 {{ localize 'SUPERS.TotalDice' }}:  {{> (cmp 'costs') costs=Costs.Total}}
             </div>
         </aside>
-
     </header>
 
-
     <main class="s_as__main">
-
         <div class="s_as__main__c1">
             {{> (actorPart 'resistance-panel') }}
             {{> (actorPart 'competency-panel') }}
+
+            <div class="s_as__dice-roll-panel">
+                {{> (actorPart 'panel-header') title='SUPERS.RollSomeDice' }}
+
+                <div class="s_as__dice-roll-panel_dice">
+                    {{> (cmp 'dice-roll') amount=1 }}
+                    {{> (cmp 'dice-roll') amount=2 }}
+                    {{> (cmp 'dice-roll') amount=3 }}
+                    {{> (cmp 'dice-roll') amount=4 }}
+                    {{> (cmp 'dice-roll') amount=5 }}
+                    {{> (cmp 'dice-roll') amount=6 }}
+                    {{> (cmp 'dice-roll') amount=7 }}
+                    {{> (cmp 'dice-roll') amount=8 }}
+                    {{> (cmp 'dice-roll') amount=9 }}
+                </div>
+            </div>
         </div>
 
         <div class="s_as__main__c2">

@@ -33,7 +33,7 @@
     }
   ],
   "manifest": "https://github.com/RackNarDev/supers-rpg-foundryvtt/releases/latest/download/system.json",
-  "name": "supers",
+  "id": "supers",
   "packs": [
     {
       "label": "Powers",
@@ -70,7 +70,8 @@
     "actors/styles/actor-sheet.css",
     "chat/styles/chat.css",
     "styles/directory-item.css",
-    "party/party-overview.css"
+    "party/party-overview.css",
+    "dialogs/styles.css"
   ],
   "templateVersion": 2,
   "title": "Supers!",

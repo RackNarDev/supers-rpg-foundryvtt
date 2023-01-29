@@ -1,0 +1,45 @@
+<header class="s_dd_header">
+    <img class="s_dd__header__img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}"
+         height="100" width="100" alt="{{actor.name}}"/>
+
+    <h1 class="s_dd_actro-name">{{actor.name}}</h1>
+</header>
+
+<div class="s_dd_used">
+    <span class="s_as_diceroller">{{options.diceAmount}}</span>
+    <span class="s_dd_used-text">{{options.rollaction}}</span>
+</div>
+
+<h3 class="s_dd_heading-3">{{localize 'SUPERS.DiceModifiers' }}</h3>
+<div class="s_dd__options-list">
+
+    {{localize 'SUPERS.fromTempCompetency' }} ({{localize 'SUPERS.current'}} {{this.actor.system.Competency.temp}})
+    <select{{#if (lt this.actor.system.Competency.temp 1)}} disabled{{/if}} id="s_dd_temp-cd">
+        {{#rangeFromTo 0 this.actor.system.Competency.temp }}
+            <option value="{timesIndex}">{timesIndex}{{ localize 'SUPERS.D' }}</option>
+        {{/rangeFromTo}}
+    </select>
+
+    {{localize 'SUPERS.fromActorCompetency' }} ({{localize 'SUPERS.current'}} {{this.actor.system.Competency.current}})
+    <select{{#if (lt this.actor.system.Competency.current 1)}} disabled{{/if}} id="s_dd-a-cd">
+        {{#rangeFromTo 0 this.actor.system.Competency.current }}
+            <option value="{timesIndex}">{timesIndex}{{ localize 'SUPERS.D' }}</option>
+        {{/rangeFromTo}}
+    </select>
+
+    {{localize 'SUPERS.fromAnOtherPool' }}<br>
+    <select id="s_dd_op-cd">
+        {{#rangeFromTo 0 9}}
+            <option value="{timesIndex}">{timesIndex}{{ localize 'SUPERS.D' }}</option>
+        {{/rangeFromTo}}
+    </select>
+
+    {{localize 'SUPERS.BonusMalusDice' }}
+    <select id="s_dd_bd">
+        {{#select 0}}
+            {{#rangeFromTo -9 9}}
+                <option value="{timesIndex}">{timesIndex}{{ localize 'SUPERS.D' }}</option>
+            {{/rangeFromTo}}
+        {{/select}}
+    </select>
+</div>

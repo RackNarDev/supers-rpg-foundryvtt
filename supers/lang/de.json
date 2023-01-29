@@ -1,5 +1,15 @@
 {
   "SETTINGS": {
+    "confirmBeforeDelete": {
+      "hint": "Aktiviert den Bestätigungsdialog für das löschen von Charakterwerten.",
+      "name": "Charakterwerte löschen"
+    },
+    "diceDialogBehavior": {
+      "hint": "Konfiguriert den Verhalten des Würfeldialogs",
+      "name": "Verhalten des Würfeldialogs",
+      "option1": "Öffnet den Würfeldialog mit einem normalen Klick. Würfelt direkt, wenn beim Klicken die Alt-Taste gedrückt gehalten wird.",
+      "option2": "Öffnet den Würfeldialog, wenn beim Klicken die Alt-Taste gedrückt gehalten wird. Würfelt direkt mit einem normalen Klick."
+    },
     "useChaosDice": {
       "hint": "Optionale Regel: Chaoswürfel",
       "name": "Chaoswürfel"
@@ -12,18 +22,28 @@
     "Annotation": "Anmerkung",
     "Aptitude": "Talent",
     "Aptitudes": "Talente",
+    "BonusMalusDice": "Weitere Bonus order Malus Würfle",
     "Boost": "Boost",
     "Boosts": "Boosts",
     "Buttons": {
       "ToggleEditMode": "Bearbeitung an-/ausschalten"
     },
+    "Cancel": "Abbruch",
     "Competency": "Kompetenz",
+    "CompetencyDice": {
+      "free": "",
+      "label": "Competency dice",
+      "max": "",
+      "temp": ""
+    },
     "Complication": "Komplikation",
     "Complications": "Komplikationen",
     "Composure": "Haltung",
     "Current": "Aktuell",
     "D": "W",
     "De": "Deutsch",
+    "DeleteItemTitle": "{name} löschen",
+    "DiceModifiers": "Würfel Anpassung",
     "DiceRoll": "Würfelwurf",
     "Disadvantage": "Nachteil",
     "Disadvantages": "Nachteile",
@@ -37,12 +57,16 @@
     "Name": "Name",
     "None": "Keine",
     "Note": "Notiz",
+    "PartyOverview": "Liste der Charaktere",
     "Power": "Kraft",
     "Powers": "Kräfte",
     "Rating": "Würfel",
     "Reaction": "Reaktion",
     "Resistances": "Resistenzen",
+    "RollSomeDice": "Wirf ein paar Würfel",
+    "RollTheDice": "Wirf die Würfel",
     "Specialization": "Spezialisierung",
+    "SureToDeleteItem": "Sicher, dass {Name} gelöscht werden soll?",
     "Temp": "Temp",
     "TradeOff": "Ausgleich",
     "TradeOffs": "Ausgleich",
@@ -55,6 +79,9 @@
     "deletePower": "Kraft entfernen",
     "deletePowerEdge": "Edge entfernen",
     "deleteSpecializations": "Spezialisierung entfernen",
+    "fromActorCompetency": "aktuelle Kompetenzwürfel",
+    "fromAnOtherPool": "aus anderen Pools",
+    "fromTempCompetency": "temporäre Kompetenzwürfel",
     "max": "max",
     "name": "name",
     "none": "keine"

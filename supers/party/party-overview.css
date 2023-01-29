@@ -1,0 +1,26 @@
+.party-overview td {
+    vertical-align: top;
+    border-left: 1px solid;
+    padding: 0.5rem 0.5rem !important;
+}
+
+.party-overview td.center {
+    text-align: center;
+}
+
+.party-overview th {
+    writing-mode: vertical-lr;
+    border-left: 1px solid;
+}
+
+.party-overview img {
+    border: none;
+    width: 100px;
+    display: block;
+    margin: 1rem auto 1rem;
+}
+
+.party-overview h3 {
+    border: none;
+    text-align: center;
+}
