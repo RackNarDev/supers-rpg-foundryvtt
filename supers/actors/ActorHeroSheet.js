@@ -191,42 +191,48 @@ export class SupersHeroActorSheet extends ActorSheet {
   }
 
   _onDeleteItem(event) {
-    Log.fine('_onDeleteItem(event)', event);
-
+    const confirmBeforeDelete = game.settings.get('supers', 'confirmBeforeDelete');
     const element = event.currentTarget;
     const id = element.dataset.id;
     const target = element.dataset.target || 'item';
+    const item = this.actor.items.get(id);
 
-    Log.fine(`_onEditItem() data:`, {id, target});
+    if (!item) {
+      return;
+    }
+
+    let itemName = '';
+    let deleteAction = () => false;
 
     if (target === 'item') {
-
-      return this.actor.deleteEmbeddedDocuments('Item', [id]);
-
+      itemName = item.name;
+      deleteAction = () => this.actor.deleteEmbeddedDocuments('Item', [id]);
     } else if (target === 'specializations' || target === 'edges') {
-
-      const item = this.actor.items.get(id);
-      Log.fine(`_onDeleteItem() item:`, item);
-
-      if (!item) {
-        return;
-      }
-
       const index = element.dataset.index;
       const list = item.system[target] || [];
-      Log.fine(`_onDeleteItem() list:`, list);
 
       if (!list[index]) {
         return;
       }
 
+      itemName = list[index].label;
       list.splice(parseInt(index), 1);
       Log.fine(`_onDeleteItem() list (new):`, list);
+      deleteAction = () => item.update({[`data.${target}`]: list});
+    }
 
-      // TODO: Confirm dialog
-
-      return item.update({[`data.${target}`]: list});
-
+    if (confirmBeforeDelete) {
+      Dialog.confirm({
+        title: game.i18n.format('SUPERS.DeleteItemTitle', {name: itemName}),
+        content: game.i18n.format('SUPERS.SureToDeleteItem', {name: itemName}),
+        yes: deleteAction,
+        no: () => {
+          ui.notifications.info(game.i18n.format('SUPERS.Cancel'));
+        },
+        defaultYes: false,
+      });
+    } else {
+      deleteAction();
     }
 
   }
@@ -276,26 +282,79 @@ export class SupersHeroActorSheet extends ActorSheet {
     }
 
     const state = item.system.state === 'edit' ? '' : 'edit';
-
-    return item.update({['data.state']: state});
+    item.update({['data.state']: state});
   }
 
   async _rollTheDice(event) {
     Log.fine('_rollTheDice(event)', event);
+    Log.fine('_rollTheDice(event)', event.altKey);
 
     event.preventDefault();
 
+    const useChaosDice = game.settings.get('supers', 'useChaosDice');
+    const diceDialogSetting = game.settings.get('supers', 'diceDialogSetting');
     const rollString = event.currentTarget.dataset.rolld6;
     const rollaction = event.currentTarget.dataset.rollaction;
     const diceMax = event.currentTarget.dataset.dicemax;
+    const options = {
+      diceAmount: parseInt(rollString),
+      rollaction,
+      diceMax,
+      useChaosDice,
+      modifierDice: {tempCompetencyDice: 0, actorCompetencyDice: 0, otherPoolCompetencyDice: 0, bonusDice: 0},
+    };
 
-    Log.fine(`_rollTheDice() data:`, {rollString, rollaction, diceMax});
+    Log.fine(`_rollTheDice() data:`, {options});
 
     if (!rollString) {
       return;
     }
 
-    await chatRollTheDice(parseInt(rollString), rollaction, diceMax, this.actor);
+    if (('openOnClick' === diceDialogSetting && !event.altKey) ||
+        ('openWithAltKey' === diceDialogSetting && event.altKey)) {
+      Log.fine(`open Dialogbox`);
+
+      const data = {actor: this.actor, options};
+      const contentHtml = await renderTemplate(`systems/supers/dialogs/dice-roll.hbs`, data);
+      const dialogOptions = {
+        width: 600,
+        // height: 400
+      };
+
+      new Dialog({
+        title: game.i18n.format('SUPERS.DiceRollOptions'),
+        content: contentHtml,
+        buttons: {
+          cancel: {label: game.i18n.format('SUPERS.Cancel')},
+          roll: {
+            label: game.i18n.format('SUPERS.RollTheDice'),
+            callback: async html => {
+              const tempCompetencyDice = parseToPositiveNumber(html.find('#s_dd_temp-cd').val());
+              const actorCompetencyDice = parseToPositiveNumber(html.find('#s_dd-a-cd').val());
+              const otherPoolCompetencyDice = parseToPositiveNumber(html.find('#s_dd_op-cd').val());
+              const bonusDice = parseToPositiveNumber(html.find('#s_dd_bd').val());
+
+              options.diceAmount = options.diceAmount
+                  + tempCompetencyDice + actorCompetencyDice + otherPoolCompetencyDice + bonusDice;
+              options.modifierDice = {tempCompetencyDice, actorCompetencyDice, otherPoolCompetencyDice, bonusDice};
+
+              console.log(this.actor.system.Competency.temp - tempCompetencyDice);
+
+              this.actor.update({
+                ['system.Competency.temp']: this.actor.system.Competency.temp - tempCompetencyDice,
+                ['system.Competency.current']: this.actor.system.Competency.current - actorCompetencyDice,
+              });
+
+              await chatRollTheDice(options, this.actor);
+            },
+            icon: `<i class="fas fa-check"></i>`,
+          },
+        },
+      }, dialogOptions).render(true);
+
+    } else {
+      await chatRollTheDice(options, this.actor);
+    }
   }
 }
 

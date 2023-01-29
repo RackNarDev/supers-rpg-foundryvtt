@@ -1,0 +1,68 @@
+<form class="party-overview {{cssClass}}" autocomplete="off">
+
+    <table>
+        <tr>
+            <th>{{localize 'SUPERS.Name'}}</th>
+            <th>{{localize 'SUPERS.Reaction'}}</th>
+            <th>{{localize 'SUPERS.Fortitude'}}</th>
+            <th>{{localize 'SUPERS.Composure'}}</th>
+            <th>{{localize 'SUPERS.Will'}}</th>
+            <th>{{localize 'SUPERS.Aptitudes'}}</th>
+            <th>{{localize 'SUPERS.Powers'}}</th>
+        </tr>
+        {{#each actors}}
+            <tr>
+                <td>
+                    <img src="{{img}}" alt="{{name}}">
+                    <nobr><h3>{{name}}</h3></nobr>
+                </td>
+                <td class="s_as__center">
+                    <nobr>{{system.Resistances.Reaction.current}} / {{system.Resistances.Reaction.max}}</nobr>
+                </td>
+                <td class="s_as__center">
+                    <nobr>{{system.Resistances.Fortitude.current}} / {{system.Resistances.Fortitude.max}}</nobr>
+                </td>
+                <td class="s_as__center">
+                    <nobr>{{system.Resistances.Composure.current}} / {{system.Resistances.Composure.max}}</nobr>
+                </td>
+                <td class="s_as__center">
+                    <nobr>{{system.Resistances.Will.current}} / {{system.Resistances.Will.max}}</nobr>
+                </td>
+                <td>
+                    {{#each Aptitudes}}
+                        <ul>
+                            {{#if (gt system.rating 1)}}
+                                <li>
+                                    <nobr>{{name}}: {{system.rating}}</nobr>
+                                    {{#each system.specializations}}
+                                        <br>
+                                        <nobr>- {{label}}: {{rating}}</nobr>
+                                    {{/each}}
+                                </li>
+                            {{/if}}
+                        </ul>
+                    {{/each}}
+                </td>
+                <td>
+                    {{#each Powers}}
+                        <ul>
+                            <li>
+                                <nobr> {{name}}: {{system.rating}}</nobr>
+                                {{#each system.edges}}
+                                    <br> -
+                                    {{#unless (eq type "Info")}}{{s_i18n type}}:{{/unless}}
+                                    <nobr>{{label}}
+                                        {{#unless (eq type "Info")}}
+                                            {{rating}}
+                                        {{/unless}}
+                                    </nobr>
+
+                                {{/each}}
+                            </li>
+                        </ul>
+                    {{/each}}
+                </td>
+            </tr>
+        {{/each}}
+    </table>
+</form>

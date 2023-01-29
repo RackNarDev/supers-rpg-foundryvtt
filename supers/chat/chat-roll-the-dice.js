@@ -1,18 +1,17 @@
 import {Log} from '../system/logger.js';
 
-export async function chatRollTheDice(diceAmount, rollaction, diceMax, actor) {
-  Log.fine('chatRollTheDice(diceAmount, rollaction, diceMax, actor):', diceAmount, rollaction, diceMax, actor);
+export async function chatRollTheDice(options, actor) {
+  Log.fine('chatRollTheDice(diceAmount, rollaction, diceMax, actor):', {options});
+  const {diceAmount, rollaction, diceMax, useChaosDice} = options;
 
   const template = 'systems/supers/chat/templates/roll-result.hbs';
-  const optionsChaosDice = game.settings.get('supers', 'useChaosDice');
-  Log.fine('chatRollTheDice() optionsChaosDice :', optionsChaosDice);
-
-  const rollFormula = optionsChaosDice ? `${diceAmount - 1}d6 + 1d6x` : `${diceAmount}d6`;
+  const rollFormula = useChaosDice ? `${diceAmount - 1}d6 + 1d6x` : `${diceAmount}d6`;
   const roll = await new Roll(rollFormula).evaluate({async: true});
   const dice = roll?.terms[0]?.results?.map((i, idx) => ({value: i.result, isChaos: false, idx}));
+
   Log.fine('chatRollTheDice() data :', {rollFormula, roll, dice});
 
-  if (optionsChaosDice) {
+  if (useChaosDice) {
     let v = 0;
     roll.terms[2].results.forEach(i => v += i.result);
     dice.push({value: v, isChaos: true, idx: diceAmount - 1});

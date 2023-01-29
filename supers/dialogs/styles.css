@@ -1,0 +1,54 @@
+.s_dd_header {
+    column-gap: 1rem;
+    display: grid;
+    grid-template-areas: "img name"
+                         "img info";
+    grid-template-columns: 100px auto;
+    grid-template-rows: 100px auto;
+    margin: 0 0 2rem;
+    align-items: center;
+}
+
+.s_dd__header__img {
+    border: none;
+    display: block;
+    grid-area: img;
+    margin: 0;
+    padding: 0;
+    object-fit: contain;
+    height: 100px;
+    width: 100px;
+}
+
+.s_dd_actor-name {
+    grid-area: name;
+    min-width: 200px;
+}
+
+.s_dd_heading-3 {
+    margin-top: 2rem;
+}
+
+.s_dd_used {
+    margin: 1rem 0;
+    padding: 0 1rem;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.s_dd_used-text {
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.s_dd__options-list {
+    column-gap: 1rem;
+    display: grid;
+    grid-template-columns: auto 5rem;
+    align-items: center;
+    margin: 0 0 2rem;
+    row-gap: 0.25rem;
+}

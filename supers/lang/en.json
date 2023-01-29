@@ -1,5 +1,15 @@
 {
   "SETTINGS": {
+    "confirmBeforeDelete": {
+      "hint": "Activate confirm dialog for delete actor entries.",
+      "name": "Confirm before delete Item"
+    },
+    "diceDialogBehavior": {
+      "hint": "Config the dice dialog behavior",
+      "name": "Dice dialog behavior",
+      "option1": "Open the dice dialog with a normal click. Roll directly with hold the alt-key on click.",
+      "option2": "Open the dice dialog with hold the alt-key and click. Roll directly with normal click."
+    },
     "useChaosDice": {
       "hint": "Use the optional rule Chaos-Dice",
       "name": "Use chaos dice"
@@ -12,11 +22,13 @@
     "Annotation": "Annotation",
     "Aptitude": "Aptitude",
     "Aptitudes": "Aptitudes",
+    "BonusMalusDice": "Bonus or malus dice",
     "Boost": "Boost",
     "Boosts": "Boosts",
     "Buttons": {
       "ToggleEditMode": "Toggle edit mode"
     },
+    "Cancel": "Cancel",
     "Competency": "Competency",
     "Complication": "Complication",
     "Complications": "Complications",
@@ -24,6 +36,8 @@
     "Current": "Current",
     "D": "D",
     "De": "German",
+    "DeleteItemTitle": "Delete {name}",
+    "DiceModifiers": "Dice modifiers",
     "DiceRoll": "Dice roll",
     "Disadvantage": "Disadvantage",
     "Disadvantages": "Disadvantages",
@@ -37,13 +51,17 @@
     "Name": "Name",
     "None": "None",
     "Note": "Note",
+    "PartyOverview": "Party Overview",
     "Power": "Power",
     "Powers": "Powers",
     "Rating": "Rating",
     "Reaction": "Reaction",
     "Resistances": "Resistances",
+    "RollSomeDice": "Roll some dice",
+    "RollTheDice": "Roll the dice",
     "Specialization": "Specialization",
     "StartRating": "Startrating",
+    "SureToDeleteItem": "You are sure to delete {name}?",
     "Temp": "Temp",
     "TotalDice": "Total Dice",
     "TradeOff": "Trade Off",
@@ -58,6 +76,9 @@
     "deletePowerEdge": "delete Edge",
     "deleteSpecialization": "delete Specialization",
     "deleteSpecializations": "delete Specializations",
+    "fromActorCompetency": "from the actor consistency",
+    "fromAnOtherPool": "from an other pool",
+    "fromTempCompetency": "from the temporary competency",
     "max": "max",
     "name": "name",
     "none": "none",

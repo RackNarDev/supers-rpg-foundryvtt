@@ -34,6 +34,15 @@ Handlebars.registerHelper('s_i_i18n', function(item, ...args) {
   return valuesRoot[game.i18n.lang] || valuesRoot['en'] || item.name;
 });
 
+Handlebars.registerHelper('rangeFromTo', function(start, end, ...args) {
+  const child = args[args.length-1].fn(this);
+  let res = '';
+  for (let n =  parseInt(start); n <= parseInt(end); n++) {
+    res = res + child.replace(/{timesIndex}/g, n);;
+  }
+  return res;
+});
+
 Handlebars.registerHelper('select', function(value, options) {
   var $el = $('<select />').html(options.fn(this));
   $el.find('[value="' + value + '"]').attr({'selected': 'selected'});
