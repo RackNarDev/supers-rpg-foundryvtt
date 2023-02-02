@@ -1,15 +1,12 @@
 {
   "Actor": {
-    "types": [
-      "Hero",
-      "Group"
-    ],
+    "Group": {},
     "Hero": {
       "Age": 19,
       "AlterEgo": "",
       "Competency": {
-        "max": 0,
         "current": 0,
+        "max": 0,
         "temp": 0
       },
       "DiceTotals": 20,
@@ -40,39 +37,44 @@
       },
       "Weight": ""
     },
-    "Group": {
-
-    }
+    "Mooks": {
+      "Notes": "",
+      "Powerlevel": 20
+    },
+    "types": [
+      "Hero",
+      "Mooks"
+    ]
   },
   "Item": {
+    "Advantage": {
+      "de": "",
+      "rating": 1
+    },
+    "Aptitude": {
+      "de": "",
+      "rating": 1,
+      "specializations": []
+    },
+    "Disadvantage": {
+      "de": "",
+      "rating": 1
+    },
+    "Equipment": {
+      "de": "",
+      "rating": 1
+    },
+    "Power": {
+      "de": "",
+      "edges": [],
+      "rating": 1
+    },
     "types": [
       "Aptitude",
       "Advantage",
       "Disadvantage",
       "Power",
       "Equipment"
-    ],
-    "Aptitude": {
-      "rating": 1,
-      "de": "",
-      "specializations": []
-    },
-    "Advantage": {
-      "rating": 1,
-      "de": ""
-    },
-    "Disadvantage": {
-      "rating": 1,
-      "de": ""
-    },
-    "Power": {
-      "rating": 0,
-      "de": "",
-      "edges": []
-    },
-    "Equipment": {
-      "rating": 0,
-      "de": ""
-    }
+    ]
   }
 }

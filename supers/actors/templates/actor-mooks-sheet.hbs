@@ -1,0 +1,84 @@
+<form class="s_as__actor-sheet actor-mook-sheet {{cssClass}}{{#if editMode}} s_as_edit-mode{{/if}}" autocomplete="off">
+
+    <img class="s_as_mook__header__img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="150"
+         width="150" alt="{{actor.name}}"/>
+
+    <div>
+        <header class="s_as_mook__header">
+            <h1 class="s_as_mook__header__name">
+                {{#if editMode}}
+                    <input name="name" type="text" value="{{actor.name}}" placeholder="{{ localize 'SUPERS.Name' }}"/>
+                {{else}}
+                    <span>{{actor.name}}</span>
+                {{/if}}
+            </h1>
+            {{#if editMode}}
+                <input name="system.Notes" type="text" value="{{actor.system.Notes}}"/>
+            {{else}}
+                <span class="s_as_mook__info-label">{{ actor.system.Notes }}</span>
+            {{/if}}
+        </header>
+
+
+        <main class="s_as_mook__main">
+
+            <div class="s_as_mook__infos">
+                {{#if editMode}}
+                    <span class="s_as_mook__info-label">{{ localize 'SUPERS.Powerlevel' }}:</span>
+                    <input name="system.Powerlevel" type="text" value="{{actor.system.Powerlevel}}"/>
+                {{else}}
+                    <span class="s_as_mook__info-label">{{ localize 'SUPERS.Powerlevel' }}:</span>
+                    {{> (cmp 'dice-roll') amount=actor.system.Powerlevel rollaction='SUPERS.makeSomthing' }}
+                {{/if}}
+            </div>
+
+            {{#if DisAdvantages}}
+                {{ localize 'SUPERS.AdvantagesDisadvantages' }}
+                <div class="s_as_mook__list">
+                    {{#each DisAdvantages}}
+                        {{#if ../this.editMode}}
+                            {{s_i_i18n this }}
+                            {{> (cmp 'delete-btn') this action='delete-item' title='SUPERS.delete'}}
+                            <br>
+                        {{else}}
+                            {{s_i_i18n this }}{{#unless @last}},{{/unless}}
+                        {{/if}}
+                    {{/each}}
+                </div>
+            {{/if}}
+
+            {{#if Aptitudes}}
+                {{ localize 'SUPERS.Aptitudes' }}
+                <div class="s_as_mook__infos">
+                    {{#each Aptitudes}}
+                        {{#if ../this.editMode}}
+                            <span class="s_as_mook__info-label">{{s_i_i18n this }}:</span>
+                            {{> (cmp 'delete-btn') this action='delete-item' title='SUPERS.deleteAptitude'}}
+                        {{else}}
+                            <span class="s_as_mook__info-label">{{s_i_i18n this }}:</span>
+                            {{> (cmp 'dice-roll') amount=../actor.system.Powerlevel rollaction=(s_i_i18n this) dicemax='3' type='small' }}
+                        {{/if}}
+                    {{/each}}
+                </div>
+            {{/if}}
+
+            {{#if Powers}}
+                {{ localize 'SUPERS.Powers' }}
+                <div class="s_as_mook__infos">
+                    {{#each Powers}}
+                        {{#if ../this.editMode}}
+                            <span class="s_as_mook__info-label">{{s_i_i18n this }}:</span>
+                            {{> (cmp 'delete-btn') this action='delete-item' title='SUPERS.deletePower'}}
+                        {{else}}
+                            <span class="s_as_mook__info-label">{{s_i_i18n this }}:</span>
+                            {{> (cmp 'dice-roll') amount=../actor.system.Powerlevel rollaction=(s_i_i18n this) type='small' }}
+                        {{/if}}
+                    {{/each}}
+                </div>
+            {{/if}}
+
+        </main>
+
+    </div>
+
+</form>
