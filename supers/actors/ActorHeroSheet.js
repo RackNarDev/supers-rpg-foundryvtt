@@ -286,9 +286,6 @@ export class SupersHeroActorSheet extends ActorSheet {
   }
 
   async _rollTheDice(event) {
-    Log.fine('_rollTheDice(event)', event);
-    Log.fine('_rollTheDice(event)', event.altKey);
-
     event.preventDefault();
 
     const useChaosDice = game.settings.get('supers', 'useChaosDice');
@@ -304,15 +301,12 @@ export class SupersHeroActorSheet extends ActorSheet {
       modifierDice: {tempCompetencyDice: 0, actorCompetencyDice: 0, otherPoolCompetencyDice: 0, bonusDice: 0},
     };
 
-    Log.fine(`_rollTheDice() data:`, {options});
-
     if (!rollString) {
       return;
     }
 
     if (('openOnClick' === diceDialogSetting && !event.altKey) ||
         ('openWithAltKey' === diceDialogSetting && event.altKey)) {
-      Log.fine(`open Dialogbox`);
 
       const data = {actor: this.actor, options};
       const contentHtml = await renderTemplate(`systems/supers/dialogs/dice-roll.hbs`, data);

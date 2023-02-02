@@ -1,0 +1,36 @@
+.actor-mook-sheet {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    column-gap: 1rem;
+}
+
+.s_as_mook__header {
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+
+.s_as_mook__header__img {
+    max-width: 100%;
+    margin: 0 auto 0 0;
+    display: block;
+}
+
+.s_as_mook__infos {
+    display: grid;
+    grid-template-columns: auto 2rem;
+    column-gap: 1rem;
+    row-gap: 0.1rem;
+    align-items: center;
+    margin: 0 0 0.5rem;
+    font-size: 0.8rem;
+}
+
+.s_as_mook__infos > *:nth-child(2n) {
+    justify-self: end;
+}
+
+.s_as_mook__list {
+    font-size: 0.8rem;
+    margin: 0 0 0.5rem;
+}

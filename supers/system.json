@@ -68,6 +68,7 @@
   "socket": false,
   "styles": [
     "actors/styles/actor-sheet.css",
+    "actors/styles/mook-sheet.css",
     "chat/styles/chat.css",
     "styles/directory-item.css",
     "party/party-overview.css",

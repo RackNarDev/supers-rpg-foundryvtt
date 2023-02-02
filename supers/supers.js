@@ -5,6 +5,7 @@ import {customizeItemDirectoryAppearance} from './system/customizeItemDirectoryA
 import {Log} from './system/logger.js';
 
 import {SupersHeroActorSheet} from './actors/ActorHeroSheet.js';
+import {SupersMooksActorSheet} from './actors/ActorMooksSheet.js';
 import {SupersItemSheet} from './items/ItemSheet.js';
 import PartyOverviewApp from './party/PartyOverviewApp.js';
 
@@ -17,6 +18,7 @@ Hooks.once('init', function() {
 
   Actors.unregisterSheet('core', ActorSheet);
   Actors.registerSheet('supers', SupersHeroActorSheet, {makeDefault: true, types: ['Hero']});
+  Actors.registerSheet('supers', SupersMooksActorSheet, {types: ['Mooks']});
 
   Items.unregisterSheet('core', ItemSheet);
   Items.registerSheet('supers', SupersItemSheet, {makeDefault: true});
@@ -78,4 +80,3 @@ Hooks.on('deleteToken', (token, options, userId) => {
     partyOverview.render(false);
   }
 });
-
