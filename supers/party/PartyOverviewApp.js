@@ -1,13 +1,14 @@
 class PartyOverviewApp extends Application {
   constructor(options) {
     super(options);
+    this.expanded = false;
   }
 
   static get defaultOptions() {
     return mergeObject(super.defaultOptions, {
       width: 900,
-      height: 'fit-content',
-      resizable: true,
+      // height: 'fit-content',
+      // resizable: true,
       title: game.i18n.format('SUPERS.PartyOverview'),
       template: 'systems/supers/party/group-sheet.hbs',
       classes: ['party-overview-window', game.system.id],

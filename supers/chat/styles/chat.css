@@ -1,81 +1,97 @@
 .chat-message .roll-header {
     display: flex;
-    gap: 1rem;
+    gap: 0.5rem;
+    border-top: 2px solid var(--color-underline-header);
+    border-bottom: 2px solid var(--color-underline-header);
+    margin: 0 0 1rem;
 }
 
 .chat-message .roll-header img {
     border: 0;
     display: block;
-    margin: 0;
+    margin: 0.25rem 0;
     padding: 0;
-    width: 80px;
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
 }
 
 .chat-message .rollaction {
-    align-items: center;
+    align-items: space-between;
     display: flex;
     gap: 1rem;
     justify-content: space-around;
-    margin: 1rem 0;
+    margin: 0.5rem 0 1rem;
 }
 
 .chat-message .rollaction-label {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
+    margin: 0;
+    display: block;
 }
 
 .chat-message .actor-name {
-    align-self: center;
-    font-size: 1.6rem;
-    margin: 1rem 0;
-    text-align: center;
+    font-size: 0.7rem;
+    margin: 0;
+    display: block;
 }
 
 .chat-message .roll-subtitle {
     border-bottom: 1px solid;
     display: block;
-    text-align: center;
+    /*text-align: center;*/
+    opacity: 0.8;
+}
+
+.roll-result-row {
+    flex: 1 1 100%;
+    display: flex;
+    gap: 0.5rem;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .chat-message .roll-result {
     background: yellow;
-    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     display: block;
-    flex: 0 0 4rem;
-    font-size: 2rem;
-    height: 4rem;
-    line-height: 4rem;
+    flex: 0 0 2rem;
+    font-size: 1.3rem;
+    height: 2rem;
+    line-height: 2rem;
     margin: 0;
     text-align: center;
-    width: 4rem;
+    width: 2rem;
 }
 
 .chat-message .roll-list {
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem;
-    justify-content: center;
+    gap: 0.25rem;
     list-style: none;
-    margin: 1rem 0;
+    margin: 0;
     padding: 0;
 }
 
 .chat-message .roll-list li {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     font-weight: 600;
-    height: 2rem;
-    line-height: 2rem;
+    height: 1rem;
+    line-height: 1rem;
     list-style: none;
     margin: 0;
     padding: 0;
     text-align: center;
-    width: 2rem;
+    width: 1rem;
+    font-size: 0.7rem;
+    font-weight: 100;
 }
 
-.chat-message .used-dice li {
+.chat-message li.used-dice {
     background: #dfcd7c;
 }
 
-.chat-message .rest-dice li {
+.chat-message li.rest-dice {
     background: #c0c0c0;
     color: #ffffff;
 }
@@ -83,4 +99,23 @@
 .chat-message .roll-list li.chaos-dice {
     background: #d10b0b;
     color: #ffffff;
+}
+
+.chat-message .roll-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+}
+
+.chat-message  .roll-details-unused {
+    text-align: right;
+}
+
+.chat-message .roll-details-unused .roll-list{
+    justify-content: flex-end;
+}
+
+.chat-message .roll-details-label {
+    text-align: center;
+    font-size: 0.8rem;
 }
