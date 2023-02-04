@@ -2,7 +2,7 @@
 
     <header class="s_as__header">
         <img class="s_as__header__img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}"
-             height="192" width="192" alt="{{actor.name}}"/>
+             height="195" width="195" alt="{{actor.name}}"/>
 
         <h1 class="s_as__header__name">
             {{#if editMode}}
@@ -20,9 +20,62 @@
     </header>
 
     <main class="s_as__main">
+
         <div class="s_as__main__c1">
             {{> (actorPart 'resistance-panel') }}
             {{> (actorPart 'competency-panel') }}
+
+            <div class="s_as__initiative_panel">
+
+                {{> (actorPart 'panel-header') title='SUPERS.Initiative' }}
+
+                <a class="s_as__initiative_roller" data-rollinitiative="true"
+                   data-rolld6="{{actor.system.Initiative.value}}"
+                   data-rollaction="{{ localize 'SUPERS.InitiativeRoll' }}"
+                   data-initiativeaction="{{actor.system.Initiative.action}}"
+                    {{#if actor.system.Initiative.useAptitude}} data-dicemax="3"{{/if}}
+                   title="SUPERS.InitiativeRoll">
+                    {{ localize 'SUPERS.InitiativeRoll' }}:
+                    {{actor.system.Initiative.value}}{{ localize 'SUPERS.D' }}
+                    {{#if actor.system.Initiative.useAptitude}}
+                        {{#if (gt actor.system.Initiative.value 3)}}
+                            {{ localize 'SUPERS.highestDiceInfo' amount=3}}
+                        {{/if}}
+                    {{/if}}
+                </a>
+
+                {{ localize 'SUPERS.UseForInitiativeRoll' }}
+                <select class="s_as__initiative_base-select" name="system.Initiative.base">
+                    {{#select actor.system.Initiative.base}}
+                        <optgroup label="{{ localize 'SUPERS.BaseInitiativeSelect' }}">
+                            <option value="Reaction">{{ localize 'SUPERS.Reaction' }}</option>
+                        </optgroup>
+                        <optgroup label="{{ localize 'SUPERS.Aptitudes' }}">
+                            {{#each Aptitudes}}
+                                {{#if (gt system.rating 1)}}
+                                    <option value="Aptitude:{{ this.name }}">
+                                        {{s_i_i18n this }} ({{system.rating}})
+                                    </option>
+                                {{/if}}
+                                {{#if this.system.specializations}}
+                                    {{#each this.system.specializations}}
+                                        <option value="Aptitude:{{ ../this.name }}:Specialization:{{ this.label }}">
+                                            {{ ../this.name }}: {{ this.label }} ({{this.rating}})
+                                        </option>
+                                    {{/each}}
+                                {{/if}}
+                            {{/each}}
+                        </optgroup>
+                        <optgroup label="{{ localize 'SUPERS.Powers' }}">
+                            {{#each Powers}}
+                                <option value="Power:{{ this.name }}">{{s_i_i18n this }} ({{system.rating}})
+                                </option>
+                            {{/each}}
+                        </optgroup>
+                    {{/select}}
+                </select>
+
+            </div>
 
             <div class="s_as__dice-roll-panel">
                 {{> (actorPart 'panel-header') title='SUPERS.RollSomeDice' }}
@@ -44,10 +97,10 @@
         <div class="s_as__main__c2">
             {{> (actorPart 'advantages-disadvantages-panel') }}
             {{> (actorPart 'aptitudes-panel') }}
+            {{> (actorPart 'powers-panel') }}
         </div>
 
         <div class="s_as__main__c3">
-            {{> (actorPart 'powers-panel') }}
         </div>
 
         <div class="s_as__main__c3">

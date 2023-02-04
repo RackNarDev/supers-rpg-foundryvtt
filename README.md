@@ -35,7 +35,7 @@ Das Projekt verzichtet zum derzeitigen Zeitpunk bewust auf weitere Abhängigkeit
 
 ![](./documentation/img/supes_foundry_settings.png)
 
-##     
+##       
 
 ## Für die Spieler
 

@@ -1,28 +1,41 @@
 <div class="roll-header">
-    <img src="{{data.img}}" alt="">
-    <div class="actor-name"> {{data.name}}</div>
+    <img src="{{actor.img}}" alt="">
+    <div class="roll-result-row">
+        <div class="roll-info">
+            <span class="actor-name"> {{actor.name}}</span>
+            <span class="rollaction-label">{{rollaction}}</span>
+        </div>
+        <span class="roll-result">{{sum}}</span>
+    </div>
 </div>
 
-<div class="rollaction">
-    <span class="rollaction-label"> {{rollaction}}</span>
-    <span class="roll-result">{{sum}}</span>
-</div>
 
-<strong class="roll-subtitle">{{ localize 'SUPERS.DiceRoll' }}</strong>
-
-<ul class="roll-list used-dice">
-    {{#each dice as |d idx|}}
-        {{#if d.used}}
-            <li class="{{#if d.isChaos}}chaos-dice{{/if}}"{{#if d.isChaos}}title="chaos dice"{{/if}}>{{d.value}}</li>
+<div class="roll-details">
+    <div class="roll-details-used">
+        <ul class="roll-list">
+            {{#each usedDice as |d idx|}}
+                <li class="used-dice{{#if d.isChaos}} chaos-dice{{/if}}" {{#if d.isChaos}}title="chaos dice"{{/if}}>
+                    {{d.value}}
+                </li>
+            {{/each}}
+        </ul>
+        {{#if unusedDice}}
+            <span class="roll-details-label">{{ localize 'SUPERS.counted' }}</span>
         {{/if}}
-    {{/each}}
-</ul>
+    </div>
 
-<ul class="roll-list rest-dice">
-    {{#each dice as |d idx|}}
-        {{#unless d.used}}
-            <li class="{{#if d.isChaos}}chaos-dice{{/if}}">{{d.value}}</li>
-        {{/unless}}
-    {{/each}}
-</ul>
+    <div class="roll-details-unused">
+        {{#if unusedDice}}
+            <ul class="roll-list">
+                {{#each unusedDice as |d idx|}}
+                    <li class="rest-dice{{#if d.isChaos}} chaos-dice{{/if}}">
+                        {{d.value}}
+                    </li>
+                {{/each}}
+            </ul>
+            <span class="roll-details-label">{{ localize 'SUPERS.uncounted' }}</span>
+        {{/if}}
+    </div>
+
+</div>
 

@@ -1,15 +1,14 @@
 import {Log} from '../system/logger.js';
 
-export async function chatRollTheDice(options, actor) {
-  Log.fine('chatRollTheDice(diceAmount, rollaction, diceMax, actor):', {options});
-  const {diceAmount, rollaction, diceMax, useChaosDice} = options;
+export const executeDieRoll = async (actor, template, options) => {
+  Log.fine('executeDieRoll():', actor, template, options);
 
-  const template = 'systems/supers/chat/templates/roll-result.hbs';
+  const {diceAmount, rollaction, diceMax, useChaosDice} = options;
   const rollFormula = useChaosDice ? `${diceAmount - 1}d6 + 1d6x` : `${diceAmount}d6`;
   const roll = await new Roll(rollFormula).evaluate({async: true});
   const dice = roll?.terms[0]?.results?.map((i, idx) => ({value: i.result, isChaos: false, idx}));
 
-  Log.fine('chatRollTheDice() data :', {rollFormula, roll, dice});
+  Log.fine('executeDieRoll() data :', {rollFormula, roll, dice});
 
   if (useChaosDice) {
     let v = 0;
@@ -33,11 +32,15 @@ export async function chatRollTheDice(options, actor) {
 
   dice.sort((a, b) => a.idx > b.idx ? 1 : -1);
   Log.finest('chatRollTheDice() dice.sort :', dice);
+  const usedDice = dice.filter(i => i.used);
+  const unusedDice = dice.filter(i => !i.used);
 
   const templateData = {
     actor,
     rollaction,
     dice,
+    usedDice,
+    unusedDice,
     sum,
   };
 
@@ -56,4 +59,6 @@ export async function chatRollTheDice(options, actor) {
   };
 
   await ChatMessage.create(chatData);
-}
+
+  return {roll, dice, usedDice, unusedDice, sum};
+};
