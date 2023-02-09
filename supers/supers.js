@@ -8,11 +8,14 @@ import {SupersHeroActorSheet} from './actors/ActorHeroSheet.js';
 import {SupersMooksActorSheet} from './actors/ActorMooksSheet.js';
 import {SupersItemSheet} from './items/ItemSheet.js';
 import PartyOverviewApp from './party/PartyOverviewApp.js';
+import {SupersCombat} from './combat/SupersCombat.js';
 
 let partyOverview;
 
 Hooks.once('init', function() {
   Log.info('Initializing System');
+
+  CONFIG.Combat.documentClass = SupersCombat;
 
   registerSystemSettings();
 

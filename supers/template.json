@@ -45,7 +45,7 @@
     },
     "Mooks": {
       "Notes": "",
-      "Powerlevel": 20,
+      "Powerlevel": 2,
       "Initiative": {
         "value": 0,
         "useAptitude": false
