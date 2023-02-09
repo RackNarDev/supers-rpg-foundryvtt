@@ -1,7 +1,5 @@
 import {parseToPositiveNumber} from '../../system/validate.js';
-import {rollDialog} from '../../system/rollDialog.js';
-import {initiativeRoll} from '../../system/initiative-roll.js';
-import {rollTheDice} from '../../system/roll-the-dice.js';
+import {asf_rollDialog} from './asf_rollDialog.js';
 
 export const asf_rollTheDice = async (actor, event) => {
   event.preventDefault();
@@ -16,6 +14,10 @@ export const asf_rollTheDice = async (actor, event) => {
   const initiativeaction = dataset.initiativeaction;
   const diceMax = dataset.dicemax;
 
+  if (!rollString) {
+    return;
+  }
+
   const options = {
     diceAmount: parseToPositiveNumber(rollString),
     diceMax: parseToPositiveNumber(diceMax),
@@ -26,22 +28,8 @@ export const asf_rollTheDice = async (actor, event) => {
     modifierDice: {tempCompetencyDice: 0, actorCompetencyDice: 0, otherPoolCompetencyDice: 0, bonusDice: 0},
   };
 
-  if (!rollString) {
-    return;
-  }
+  const openDialog = ('openOnClick' === diceDialogSetting && !event.altKey) ||
+      ('openWithAltKey' === diceDialogSetting && event.altKey);
 
-  if (('openOnClick' === diceDialogSetting && !event.altKey) ||
-      ('openWithAltKey' === diceDialogSetting && event.altKey)) {
-    if (rollInitiative) {
-      await rollDialog(actor, options, async r => await initiativeRoll(actor, r));
-    } else {
-      await rollDialog(actor, options, async r => await rollTheDice(actor, r));
-    }
-  } else {
-    if (rollInitiative) {
-      await initiativeRoll(actor, options);
-    } else {
-      await rollTheDice(actor, options);
-    }
-  }
+  return asf_rollDialog(actor, options, rollInitiative, openDialog);
 };

@@ -15,6 +15,8 @@ export class SupersHeroActorSheet extends ActorSheet {
   }
 
   getData() {
+    Log.fine('SupersHeroActorSheet.getData()');
+
     const dataRoot = super.getData();
 
     dataRoot.editMode = !!this.editMode;
@@ -58,6 +60,13 @@ export class SupersHeroActorSheet extends ActorSheet {
       const e = dataRoot.Powers.find(i => i.name === name);
       dataRoot.actor.system.Initiative.value = e ? e.system.rating : 0;
     }
+
+    this.actor.update({
+      ['system.Initiative.base']: dataRoot.actor.system.Initiative.base,
+      ['system.Initiative.value']: dataRoot.actor.system.Initiative.value,
+      ['system.Initiative.useAptitude']: dataRoot.actor.system.Initiative.useAptitude,
+      ['system.Initiative.action']: dataRoot.actor.system.Initiative.action,
+    });
 
     dataRoot.Costs = {};
 
@@ -194,7 +203,6 @@ export class SupersHeroActorSheet extends ActorSheet {
     }
 
   }
-
 
   _onAddItem(event) {
     Log.fine('_onAddItem(event)', event);
