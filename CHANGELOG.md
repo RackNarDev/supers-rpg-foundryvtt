@@ -1,5 +1,17 @@
 # Change Log
 
+## [0.4.0] - 2024-02-22
+
+### Added
+
+### Changed
+
+- Upgrade to support FoundryVtt version 11
+
+### Fixed
+
+- Bug with the bonus/malus dice in the dice roller popup
+
 ## [0.3.0] - 2023-02-09
 
 ### Added

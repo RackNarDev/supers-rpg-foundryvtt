@@ -84,6 +84,7 @@
     "fromTempCompetency": "temporäre Kompetenzwürfel",
     "max": "max",
     "name": "name",
-    "none": "keine"
+    "none": "keine",
+    "RollAtLeastOneDie":  "Würfle mindestens einen Würfel"
   }
 }

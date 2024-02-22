@@ -1,4 +1,4 @@
-import {parseToPositiveNumber} from './validate.js';
+import {parseToPositiveNumber, parseToPositiveOrNegativeNumber} from './validate.js';
 
 const template = 'systems/supers/dialogs/dice-roll.hbs';
 
@@ -19,10 +19,16 @@ export const rollDialog = async (actor, options, onSuccess) => {
           const tempCompetencyDice = parseToPositiveNumber(html.find('#s_dd_temp-cd').val());
           const actorCompetencyDice = parseToPositiveNumber(html.find('#s_dd-a-cd').val());
           const otherPoolCompetencyDice = parseToPositiveNumber(html.find('#s_dd_op-cd').val());
-          const bonusDice = parseToPositiveNumber(html.find('#s_dd_bd').val());
+          const bonusDice = parseToPositiveOrNegativeNumber(html.find('#s_dd_bd').val());
 
           options.diceAmount = options.diceAmount
               + tempCompetencyDice + actorCompetencyDice + otherPoolCompetencyDice + bonusDice;
+
+          if (options.diceAmount < 1) {
+            ui.notifications.error(game.i18n.format('SUPERS.RollAtLeastOneDie'));
+            return;
+          }
+
           options.modifierDice = {tempCompetencyDice, actorCompetencyDice, otherPoolCompetencyDice, bonusDice};
 
           if (actor.system.Competency) {
